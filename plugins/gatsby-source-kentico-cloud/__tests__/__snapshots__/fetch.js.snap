@@ -1,0 +1,114 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`fetches KC types 1`] = `
+Object {
+  "pagination": Object {
+    "count": 3,
+    "limit": 0,
+    "next_page": "",
+    "skip": 0,
+  },
+  "types": Array [
+    Object {
+      "elements": Object {
+        "date": Object {
+          "name": "Date",
+          "type": "date_time",
+        },
+        "name___teaser_image__name": Object {
+          "name": "Name",
+          "type": "text",
+        },
+        "name___teaser_image__teaser_image": Object {
+          "name": "Teaser image",
+          "type": "asset",
+        },
+        "url": Object {
+          "name": "URL",
+          "type": "text",
+        },
+      },
+      "system": Object {
+        "codename": "blogpost_reference",
+        "id": "a8277e06-a3a7-4038-852f-90765744ad26",
+        "last_modified": "2018-07-02T21:23:05.1779291Z",
+        "name": "Blogpost reference",
+      },
+    },
+    Object {
+      "elements": Object {
+        "finished_at": Object {
+          "name": "Finished at",
+          "type": "date_time",
+        },
+        "name___teaser_image__name": Object {
+          "name": "Name",
+          "type": "text",
+        },
+        "name___teaser_image__teaser_image": Object {
+          "name": "Teaser image",
+          "type": "asset",
+        },
+        "started_at": Object {
+          "name": "Started at",
+          "type": "date_time",
+        },
+        "url": Object {
+          "name": "URL",
+          "type": "text",
+        },
+        "url_slug": Object {
+          "name": "URL slug",
+          "type": "url_slug",
+        },
+      },
+      "system": Object {
+        "codename": "project_reference",
+        "id": "9ea98d20-a477-455c-b30f-0e3b9d055795",
+        "last_modified": "2018-05-30T12:39:13.115595Z",
+        "name": "Project reference",
+      },
+    },
+    Object {
+      "elements": Object {
+        "date": Object {
+          "name": "Date",
+          "type": "date_time",
+        },
+        "format": Object {
+          "name": "Format",
+          "options": Array [
+            Object {
+              "codename": "online",
+              "name": "Online",
+            },
+            Object {
+              "codename": "in_person",
+              "name": "In person",
+            },
+          ],
+          "type": "multiple_choice",
+        },
+        "name": Object {
+          "name": "Name",
+          "type": "text",
+        },
+        "url_location": Object {
+          "name": "URL/location",
+          "type": "text",
+        },
+        "url_slug": Object {
+          "name": "URL slug",
+          "type": "url_slug",
+        },
+      },
+      "system": Object {
+        "codename": "speaking_engagement",
+        "id": "a8aa610f-33fd-456d-b44f-bc3bbcff34e3",
+        "last_modified": "2018-05-29T12:11:41.8670927Z",
+        "name": "Speaking engagement",
+      },
+    },
+  ],
+}
+`;
