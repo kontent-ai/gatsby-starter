@@ -8,19 +8,19 @@ export default ({ data }) => {
       <table>
         <tr>
           <th>Name:</th>
-          <td>{data.kenticoCloudItemSpeakingEngagement.name.value}</td>
+          <td>{item.name.value}</td>
         </tr>
         <tr>
           <th>Date:</th>
-          <td>{data.kenticoCloudItemSpeakingEngagement.date.datetime}</td>
+          <td>{item.date.datetime}</td>
         </tr>
         <tr>
           <th>Format:</th>
-          <td>{data.kenticoCloudItemSpeakingEngagement.format.value.map(option => option.name)}</td>
+          <td>{item.format.value.map(option => option.name)}</td>
         </tr>
         <tr>
           <th>URL/location:</th>
-          <td>{data.kenticoCloudItemSpeakingEngagement.url_location.value}</td>
+          <td>{item.url_location.value}</td>
         </tr>
       </table>
     </div>

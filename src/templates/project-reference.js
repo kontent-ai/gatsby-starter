@@ -5,19 +5,19 @@ export default ({ data }) => {
   const item = data.kenticoCloudItemProjectReference;
   return (
     <div>
-      <img src={data.kenticoCloudItemProjectReference.name___teaser_image__teaser_image.assets[0].url} />
+      <img src={item.name___teaser_image__teaser_image.assets[0].url} />
       <table>
         <tr>
           <th>Name:</th>
-          <td>{data.kenticoCloudItemProjectReference.name___teaser_image__name.value}</td>
+          <td>{item.name___teaser_image__name.value}</td>
         </tr>
         <tr>
           <th>URL:</th>
-          <td>{data.kenticoCloudItemProjectReference.url.value}</td>
+          <td>{item.url.value}</td>
         </tr>
         <tr>
           <th>Duration:</th>
-          <td>{data.kenticoCloudItemProjectReference.started_at.datetime} &ndash; {data.kenticoCloudItemProjectReference.finished_at.datetime}</td>
+          <td>{item.started_at.datetime} &ndash; {item.finished_at.datetime}</td>
         </tr>
       </table>
     </div>

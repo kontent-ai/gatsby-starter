@@ -1,9 +1,8 @@
 import React from 'react';
 import Link from 'gatsby-link';
-import { array } from 'prop-types';
 
 export default ({ data }) => {
-  const union = new Array(...data.allKenticoCloudItemBlogpostReference, ...data.allKenticoCloudItemProjectReference.edges, ...data.allKenticoCloudItemSpeakingEngagement.edges)
+  const union = new Array(...data.allKenticoCloudItemBlogpostReference.edges, ...data.allKenticoCloudItemProjectReference.edges, ...data.allKenticoCloudItemSpeakingEngagement.edges)
   const items = union.map(({ node }) => {
     if (node.fields !== undefined && node.fields !== null && node.fields.templateNameStep1 !== undefined && node.fields.templateNameStep1 !== null) {
       return (
@@ -38,7 +37,6 @@ export const query = graphql`
           system {
             id
             name
-            codename
           }
           url {
             value
@@ -56,7 +54,6 @@ export const query = graphql`
           system {
             id
             name
-            codename
           }
           url {
             value
@@ -74,7 +71,6 @@ export const query = graphql`
           system {
             id
             name
-            codename
           }
         }
       }
