@@ -1,8 +1,7 @@
-const deliveryClient = require(`kentico-cloud-delivery`);
+const deliveryClient = require(`kentico-cloud-delivery`)
 const normalize = require(`./normalize`)
-const fetch = require(`./fetch`)
 
-exports.sourceNodes = async ({ boundActionCreators, createNodeId }, { kcDeliveryEndpointUrl, kcProjectId }) => {
+exports.sourceNodes = async ({ boundActionCreators, createNodeId }, { kcProjectId }) => {
   const { createNode } = boundActionCreators;
   console.log(`sourceNodes executes`);
 
@@ -10,22 +9,21 @@ exports.sourceNodes = async ({ boundActionCreators, createNodeId }, { kcDelivery
     projectId: kcProjectId
   });
 
-  let contentTypes = await fetch.getContentTypes(kcDeliveryEndpointUrl, kcProjectId)
+  const contentTypesResponse = await client.types().getPromise()
 
-  let contentTypeNodes = contentTypes.types.map(contentType => 
-    normalize.createContentTypeNode({ createNodeId, contentType }))
+  let contentTypeNodes = contentTypesResponse.types.map(contentType => 
+    normalize.createContentTypeNode({ createNodeId, contentType })
+  )
 
-  let contentItemNodes = [];
-  let response = await client.items().getPromise()
+  const contentItemsResponse = await client.items().getPromise()
 
-  response.items.forEach(contentItem => {
-    let contentItemNode = normalize.createContentItemNode({ createNodeId, contentItem, contentTypeNodes })
-    contentItemNodes.push(contentItemNode)
-  })
+  let contentItemNodes = contentItemsResponse.items.map(contentItem =>
+    normalize.createContentItemNode({ createNodeId, contentItem, contentTypeNodes })
+  )
 
   normalize.decorateTypeNodesWithChildren({ contentItemNodes, contentTypeNodes })
   contentTypeNodes.forEach(contentTypeNode => createNode(contentTypeNode))
   contentItemNodes.forEach(contentItemNode => createNode(contentItemNode))
 
   return
-};
+}
