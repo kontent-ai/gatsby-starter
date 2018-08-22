@@ -18,7 +18,7 @@ Then, you need to run the above command in the [./plugins/gatsby-source-kentico-
 
 After that, go back to the app's root directory and run:
 
-`gatsby develop`
+`npm run develop`
 
 This will bootstrap the site, build all static pages and start the site at http://localhost:8000 . You'll also be able to test arbitrary GraphQL queries in the GraphiQL interface via http://localhost:8000/___graphql .
 
