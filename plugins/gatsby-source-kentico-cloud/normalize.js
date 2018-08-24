@@ -1,73 +1,71 @@
 const crypto = require(`crypto`)
 const changeCase = require(`change-case`)
 
-exports.createContentTypeNode = ({ createNodeId, contentType }) => {
+exports.createContentTypeNode = (createNodeId, contentType) => {
   const codenameParamCase = changeCase.paramCase(contentType.system.codename)
   const nodeId = createNodeId(`kentico-cloud-type-${codenameParamCase}`)
-  const nodeContent = JSON.stringify(contentType)
-
-  const nodeContentDigest  = crypto
-    .createHash(`md5`)
-    .update(nodeContent)
-    .digest(`hex`)
 
   const nodeData = {
-    ...contentType,
-    id: nodeId,
-    parent: null,
-    children: [],
-    internal: {
-      type: `KenticoCloudType`,
-      content: nodeContent,
-      contentDigest: nodeContentDigest,
-    }
+    contentItems___NODE: []
   }
 
-  return nodeData
+  return createKcArtifactNode(nodeId, contentType, `type`, contentType.system.codename, nodeData)
 }
 
-exports.createContentItemNode = ({ createNodeId, contentItem, contentTypeNodes }) => {
+exports.createContentItemNode = (createNodeId, contentItem, contentTypeNodes) => {
   const codenameParamCase = changeCase.paramCase(contentItem.system.codename)
-  const nodeId = createNodeId(`kentico-cloud-item-${codenameParamCase}`)
-  const nodeContent = JSON.stringify(contentItem)
-
-  const nodeContentDigest  = crypto
-    .createHash(`md5`)
-    .update(nodeContent)
-    .digest(`hex`)
+  const languageParamCase = changeCase.paramCase(contentItem.system.language)
+  const nodeId = createNodeId(`kentico-cloud-item-${codenameParamCase}-${languageParamCase}`)
 
   const parentContentTypeNode = contentTypeNodes
-    .filter(contentType => contentType.system.codename === contentItem.system.type)
+    .find(contentType => contentType.system.codename === contentItem.system.type)
 
-  if (parentContentTypeNode && Array.isArray(parentContentTypeNode) && parentContentTypeNode.length > 0) {
-    const codenamePascalCase = changeCase.pascalCase(parentContentTypeNode[0].system.codename)
-    const nodeData = {
-      ...contentItem,
-      id: nodeId,
-      parent: parentContentTypeNode[0].id,
-      children: [],
-      internal: {
-        type: `KenticoCloudItem${codenamePascalCase}`,
-        content: nodeContent,
-        contentDigest: nodeContentDigest,
-      }
-    }
+  const nodeData = {
+    otherLanguages___NODE: [],
+    contentType___NODE: parentContentTypeNode.id
+  }
 
-    return nodeData
-  }
-  else {
-    return null
-  }
+  return createKcArtifactNode(nodeId, contentItem, `item`, contentItem.system.type, nodeData)
 }
 
-exports.decorateTypeNodesWithChildren = ({ contentItemNodes, contentTypeNodes }) => {
+exports.decorateTypeNodesWithItemLinks = (contentItemNodes, contentTypeNodes) => {
   contentTypeNodes.forEach(contentTypeNode => {
     const itemNodesPerType = contentItemNodes
       .filter(contentItemNode => contentItemNode.system.type === contentTypeNode.system.codename)
 
     if (itemNodesPerType && Array.isArray(itemNodesPerType) && itemNodesPerType.length > 0) {
       let flatList = itemNodesPerType.map(itemNodePerType => itemNodePerType.id)
-      contentTypeNode.children.push(...flatList)
+      contentTypeNode.contentItems___NODE.push(...flatList)
     }
   })
+}
+
+exports.decorateItemNodeWithLanguageVariantLink = (itemNode, allNodesOfAnotherLanguage) => {
+  const languageVariantNode = allNodesOfAnotherLanguage.find(nodeOfSpecificLanguage => itemNode.system.codename === nodeOfSpecificLanguage.system.codename)
+  itemNode.otherLanguages___NODE.push(languageVariantNode.id)
+}
+
+createKcArtifactNode = (nodeId, kcArtifact, artifactKind, typeName = ``, additionalNodeData = null) => {
+  const nodeContent = JSON.stringify(kcArtifact)
+
+  const nodeContentDigest = crypto
+    .createHash(`md5`)
+    .update(nodeContent)
+    .digest(`hex`)
+
+  const codenamePascalCase = changeCase.pascalCase(typeName)
+  const artifactKindPascalCase = changeCase.pascalCase(artifactKind)
+
+  return {
+    ...kcArtifact,
+    ...additionalNodeData,
+    id: nodeId,
+    parent: null,
+    children: [],
+    internal: {
+      type: `KenticoCloud${artifactKindPascalCase}${codenamePascalCase}`,
+      content: nodeContent,
+      contentDigest: nodeContentDigest,
+    }
+  }
 }

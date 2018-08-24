@@ -32,22 +32,37 @@ exports.onCreateNode = ({ node, boundActionCreators }) => {
         value: node.url_slug.value
       })
     }
+
+    createNodeField({
+      node,
+      name: `languageStep1`,
+      value: node.system.language
+    })
   }
 };
 
 exports.createPages = ({ graphql, boundActionCreators }) => {
   const { createPage } = boundActionCreators
-  // console.log(graphql);
 
   return new Promise((resolve, reject) => {
     graphql(`
     {
+      allKenticoCloudItemBlogpostReference {
+        edges {
+          node {
+            fields {
+              languageStep1
+            }
+          }
+        }
+      }
       allKenticoCloudItemProjectReference {
         edges {
           node {
             fields {
               templateNameStep1
               slugStep1
+              languageStep1
             }
           }
         }
@@ -58,14 +73,13 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
             fields {
               templateNameStep1
               slugStep1
+              languageStep1
             }
           }
         }
       }
     }
     `).then(result => {
-        // console.log(result)
-
         const union = new Array(...result.data.allKenticoCloudItemProjectReference.edges, ...result.data.allKenticoCloudItemSpeakingEngagement.edges)
         union.forEach(({ node }) => {
           if (node.fields !== undefined && node.fields !== null && node.fields.templateNameStep1 !== undefined && node.fields.templateNameStep1 !== null) {
@@ -75,7 +89,8 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
               context: {
                 // Data passed to context is available in page queries as GraphQL variables.
                 templateNameStep2: node.fields.templateNameStep1,
-                slugStep2: node.fields.slugStep1
+                slugStep2: node.fields.slugStep1,
+                languageStep2: node.fields.languageStep1
               },
             })
           }
