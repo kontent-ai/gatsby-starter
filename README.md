@@ -1,5 +1,7 @@
 # Kentico Cloud Gatsby source plugin, sample app 
 
+![GA Beacon GIF](https://localhost:5001/api/ua-12345-1?useReferer)
+
 This repo contains a [Gatsby](https://www.gatsbyjs.org/) source plugin for [Kentico Cloud](https://www.kenticocloud.com/). The [plugin](https://github.com/Kentico/cloud-gatsby/tree/master/plugins/gatsby-source-kentico-cloud) is accompanied by a simple [example app](https://github.com/Kentico/cloud-gatsby/tree/master/src), called Personal Portfolio. It portrays a personal site of a fictional technical evangelist that attends user groups, writes blog posts and implements projects.
 
 ![Kentico Cloud Gatsby sample app](https://i.imgur.com/bQyedOv.png)
