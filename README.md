@@ -89,4 +89,4 @@ In case you encounter the following error:
 
 just rebuild the site using `npm run develop` or `gatsby develop` (should you have Gatsby CLI installed).
 
-This error occurs rather randomly. If it cannot be solved by rebuilding or raising the `version` field in the [package.json](https://github.com/Kentico/cloud-gatsby/blob/master/plugins/gatsby-source-kentico-cloud/package.json) of the source plugin, then you should look for other root causes (not related to building of the schema).
+This error occurs rather randomly. If it cannot be solved by rebuilding or raising the `version` field in the [package.json](https://github.com/Kentico/cloud-gatsby/blob/master/plugins/gatsby-source-kentico-cloud/package.json) of the source plugin, then you should look for other root causes (not related to [building of the schema](https://github.com/gatsbyjs/gatsby/issues/2674#issuecomment-340510736)).

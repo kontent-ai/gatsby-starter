@@ -42,7 +42,10 @@ exports.decorateTypeNodesWithItemLinks = (contentItemNodes, contentTypeNodes) =>
 
 exports.decorateItemNodeWithLanguageVariantLink = (itemNode, allNodesOfAnotherLanguage) => {
   const languageVariantNode = allNodesOfAnotherLanguage.find(nodeOfSpecificLanguage => itemNode.system.codename === nodeOfSpecificLanguage.system.codename)
-  itemNode.otherLanguages___NODE.push(languageVariantNode.id)
+
+  if (!itemNode.otherLanguages___NODE.find(otherLanguageId => otherLanguageId === languageVariantNode.id)) {
+    itemNode.otherLanguages___NODE.push(languageVariantNode.id)
+  }
 }
 
 createKcArtifactNode = (nodeId, kcArtifact, artifactKind, typeName = ``, additionalNodeData = null) => {
