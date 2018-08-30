@@ -42,8 +42,9 @@ exports.decorateTypeNodesWithItemLinks = (contentItemNodes, contentTypeNodes) =>
 
 exports.decorateItemNodeWithLanguageVariantLink = (itemNode, allNodesOfAnotherLanguage) => {
   const languageVariantNode = allNodesOfAnotherLanguage.find(nodeOfSpecificLanguage => itemNode.system.codename === nodeOfSpecificLanguage.system.codename)
+  const otherLanguageLink = itemNode.otherLanguages___NODE.find(otherLanguageId => otherLanguageId === languageVariantNode.id)
 
-  if (!itemNode.otherLanguages___NODE.find(otherLanguageId => otherLanguageId === languageVariantNode.id)) {
+  if (otherLanguageLink === undefined) {
     itemNode.otherLanguages___NODE.push(languageVariantNode.id)
   }
 }
