@@ -81,3 +81,12 @@ This relationship is captured by `otherLanguages` navigation property of all con
       }
     }
     
+### Troubleshooting
+
+In case you encounter the following error:
+
+`GraphQL Error Unknown field 'system' on type '...'`
+
+just rebuild the site using `npm run develop` or `gatsby develop` (should you have Gatsby CLI installed).
+
+This error occurs rather randomly. If it cannot be solved by rebuilding or raising the `version` field in the [package.json](https://github.com/Kentico/cloud-gatsby/blob/master/plugins/gatsby-source-kentico-cloud/package.json) of the source plugin, then you should look for other root causes (not related to building of the schema).
