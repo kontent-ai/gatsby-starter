@@ -18,7 +18,7 @@ Clone or fork this repo. Once it's done, navigate to the sample [app's root dire
 
 or
 
-`sudo npm-install.cmd` (Unix)
+`sudo ./npm-install.sh` (Unix)
 
 By running this batch file, you'll basically invoke `npm install` in both the root directory and the [./plugins/gatsby-source-kentico-cloud](https://github.com/Kentico/cloud-gatsby/tree/master/plugins/gatsby-source-kentico-cloud) directory.
 
