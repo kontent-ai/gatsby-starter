@@ -14,7 +14,11 @@ This repo contains a [Gatsby](https://www.gatsbyjs.org/) source plugin for [Kent
 
 Clone or fork this repo. Once it's done, navigate to the sample [app's root directory](https://github.com/Kentico/cloud-gatsby/tree/master/src) and run:
 
-`npm-install.cmd`
+`npm-install.cmd` (Windows)
+
+or
+
+`sudo npm-install.cmd` (Unix)
 
 By running this batch file, you'll basically invoke `npm install` in both the root directory and the [./plugins/gatsby-source-kentico-cloud](https://github.com/Kentico/cloud-gatsby/tree/master/plugins/gatsby-source-kentico-cloud) directory.
 
