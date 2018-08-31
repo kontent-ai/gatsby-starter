@@ -1,5 +1,5 @@
 #!/bin/bash
-npm install
+. npm install
 . cd ./plugins/gatsby-source-kentico-cloud/
-npm install
-cd ../../
+. npm install
+. cd ../../
