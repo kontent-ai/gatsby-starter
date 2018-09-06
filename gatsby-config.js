@@ -13,7 +13,8 @@ module.exports = {
         kcProjectId: '5ac93d1e-567d-01e6-e3b7-ac435f77b907',
         kcLanguageCodenames: [
           "default",
-          "de-DE"
+          "de-DE",
+          "cs-CZ"
         ],
         queryConfig: {
           usePreviewMode: false,

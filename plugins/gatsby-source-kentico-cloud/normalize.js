@@ -49,6 +49,96 @@ exports.decorateItemNodeWithLanguageVariantLink = (itemNode, allNodesOfAnotherLa
   }
 }
 
+exports.decorateItemNodesWithModularElementLinks = (itemNode, allNodesOfSameLanguage) => {
+  Object
+    .keys(itemNode)
+    .forEach(propertyName => {
+      //if (itemNode.related_project_references !== undefined){
+      const property = itemNode[propertyName]
+
+      if (Array.isArray(property) && property.length > 0 && property[0].system !== undefined) {
+        const linkPropertyName = `${propertyName}_nodes___NODE`
+
+        const linkedNodes = allNodesOfSameLanguage
+          .filter(node => {
+            const match = property.find(propertyNode => propertyNode.system.type === node.system.type && propertyNode.system.codename === node.system.codename)
+
+            return match !== undefined && match !== null
+          })
+
+        linkedNodes
+          .forEach(linkedNode => {
+            if (linkedNode.usedByContentItems___NODE === undefined) {
+              linkedNode.usedByContentItems___NODE = new Array()
+            }
+
+            if (!linkedNode.usedByContentItems___NODE.includes(itemNode.id)) {
+              linkedNode.usedByContentItems___NODE.push(itemNode.id)
+            }
+          })
+
+        idsOfLinkedNodes = linkedNodes.map(node => node.id)
+
+        if (itemNode[linkPropertyName] === undefined) {
+          itemNode[linkPropertyName] = idsOfLinkedNodes
+        }
+        else {
+          idsOfLinkedNodes.forEach(id => {
+            if (!itemNode[linkPropertyName].includes(id)) {
+              itemNode[linkPropertyName].push(id)
+            }
+          })
+        }
+      }
+      //}
+    })
+}
+
+exports.decorateItemNodesWithRichTextModularLinks = (itemNode, allNodesOfSameLanguage) => {
+  Object
+    .keys(itemNode)
+    .forEach(propertyName => {
+      if (itemNode.summary !== undefined && propertyName === "summary"){
+      const property = itemNode[propertyName]
+
+      if (property.type !== undefined && property.type === `rich_text` && property.modular_content.length > 0) {
+        const linkPropertyName = `${propertyName}_nodes___NODE`
+
+        const linkedNodes = allNodesOfSameLanguage
+          .filter(node => {
+            const match = property.find(propertyNode => propertyNode.system.type === node.system.type && propertyNode.system.codename === node.system.codename)
+
+            return match !== undefined && match !== null
+          })
+
+        linkedNodes
+          .forEach(linkedNode => {
+            if (linkedNode.usedByContentItems___NODE === undefined) {
+              linkedNode.usedByContentItems___NODE = new Array()
+            }
+
+            if (!linkedNode.usedByContentItems___NODE.includes(itemNode.id)) {
+              linkedNode.usedByContentItems___NODE.push(itemNode.id)
+            }
+          })
+
+        idsOfLinkedNodes = linkedNodes.map(node => node.id)
+
+        if (itemNode[linkPropertyName] === undefined) {
+          itemNode[linkPropertyName] = idsOfLinkedNodes
+        }
+        else {
+          idsOfLinkedNodes.forEach(id => {
+            if (!itemNode[linkPropertyName].includes(id)) {
+              itemNode[linkPropertyName].push(id)
+            }
+          })
+        }
+      }
+      }
+    })
+}
+
 createKcArtifactNode = (nodeId, kcArtifact, artifactKind, typeName = ``, additionalNodeData = null) => {
   const nodeContent = JSON.stringify(kcArtifact)
 

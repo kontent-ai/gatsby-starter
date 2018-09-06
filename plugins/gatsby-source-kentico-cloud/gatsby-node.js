@@ -76,6 +76,13 @@ exports.sourceNodes = async ({ boundActionCreators, createNodeId }, { kcProjectI
   }
 
   normalize.decorateTypeNodesWithItemLinks(contentItemNodes, contentTypeNodes)
+  contentItemNodes.forEach(itemNode => normalize.decorateItemNodesWithModularElementLinks(itemNode, contentItemNodes))
+
+  nonDefaultLanguageItemNodes.forEach(languageNodes => {
+    languageNodes.forEach(itemNode => normalize.decorateItemNodesWithModularElementLinks(itemNode, languageNodes))
+  })
+
+  //contentItemNodes.forEach(itemNode => normalize.decorateItemNodesWithRichTextModularLinks(itemNode, contentItemNodes))
 
   try {
     contentTypeNodes.forEach(contentTypeNode => createNode(contentTypeNode))
