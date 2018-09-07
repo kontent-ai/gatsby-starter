@@ -16,10 +16,11 @@ exports.sourceNodes = async ({ boundActionCreators, createNodeId }, { kcProjectI
   )
 
   const contentItemsResponse = await client.items().getPromise()
+  const contentItems = contentItemsResponse.items
+  normalize.refillRichTextModularCodenames(contentItems, contentItemsResponse.debug.response.data.items)
   let defaultLanguageCodename = `default`
 
-  if (contentItemsResponse.items !== undefined &&
-    contentItemsResponse.items !== null &&
+  if (contentItemsResponse.items &&
     Array.isArray(contentItemsResponse) &&
     contentItemsResponse.items.length > 0) {
     defaultLanguageCodename = contentItemsResponse.items[0].system.language
@@ -38,11 +39,13 @@ exports.sourceNodes = async ({ boundActionCreators, createNodeId }, { kcProjectI
   let nonDefaultLanguageItemNodes = new Map()
 
   languageResponses.forEach(languageResponse => {
+    const languageItems = languageResponse.items
+    normalize.refillRichTextModularCodenames(languageItems, languageResponse.debug.response.data.items)
     let allNodesOfCurrentLanguage = new Array()
     let languageCodename = null
 
     contentItemNodes.forEach(contentItemNode => {
-      const languageVariantItem = languageResponse.items.find(variant =>
+      const languageVariantItem = languageItems.find(variant =>
         contentItemNode.system.codename === variant.system.codename)
 
       if (languageVariantItem !== undefined && languageVariantItem !== null) {
@@ -82,7 +85,11 @@ exports.sourceNodes = async ({ boundActionCreators, createNodeId }, { kcProjectI
     languageNodes.forEach(itemNode => normalize.decorateItemNodesWithModularElementLinks(itemNode, languageNodes))
   })
 
-  //contentItemNodes.forEach(itemNode => normalize.decorateItemNodesWithRichTextModularLinks(itemNode, contentItemNodes))
+  contentItemNodes.forEach(itemNode => normalize.decorateItemNodesWithRichTextModularLinks(itemNode, contentItemNodes))
+
+  nonDefaultLanguageItemNodes.forEach(languageNodes => {
+    languageNodes.forEach(itemNode => normalize.decorateItemNodesWithRichTextModularLinks(itemNode, languageNodes))
+  })
 
   try {
     contentTypeNodes.forEach(contentTypeNode => createNode(contentTypeNode))

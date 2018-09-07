@@ -49,11 +49,29 @@ exports.decorateItemNodeWithLanguageVariantLink = (itemNode, allNodesOfAnotherLa
   }
 }
 
+exports.refillRichTextModularCodenames = (sdkItems, debugItems) => {
+  if (sdkItems && debugItems && Array.isArray(sdkItems) && Array.isArray(debugItems)) {
+    sdkItems
+      .forEach(sdkItem => {
+        const counterpart = debugItems.find(debugItem => sdkItem.system.type === debugItem.system.type && sdkItem.system.codename === debugItem.system.codename)
+        
+        Object
+          .keys(sdkItem)
+          .forEach(propertyName => {
+            const property = sdkItem[propertyName]
+
+            if (property && property.type && property.type === `rich_text`) {
+              property[`modular_content`] = counterpart.elements[propertyName].modular_content
+            }
+          })
+      })
+  }
+}
+
 exports.decorateItemNodesWithModularElementLinks = (itemNode, allNodesOfSameLanguage) => {
   Object
     .keys(itemNode)
     .forEach(propertyName => {
-      //if (itemNode.related_project_references !== undefined){
       const property = itemNode[propertyName]
 
       if (Array.isArray(property) && property.length > 0 && property[0].system !== undefined) {
@@ -66,31 +84,8 @@ exports.decorateItemNodesWithModularElementLinks = (itemNode, allNodesOfSameLang
             return match !== undefined && match !== null
           })
 
-        linkedNodes
-          .forEach(linkedNode => {
-            if (linkedNode.usedByContentItems___NODE === undefined) {
-              linkedNode.usedByContentItems___NODE = new Array()
-            }
-
-            if (!linkedNode.usedByContentItems___NODE.includes(itemNode.id)) {
-              linkedNode.usedByContentItems___NODE.push(itemNode.id)
-            }
-          })
-
-        idsOfLinkedNodes = linkedNodes.map(node => node.id)
-
-        if (itemNode[linkPropertyName] === undefined) {
-          itemNode[linkPropertyName] = idsOfLinkedNodes
-        }
-        else {
-          idsOfLinkedNodes.forEach(id => {
-            if (!itemNode[linkPropertyName].includes(id)) {
-              itemNode[linkPropertyName].push(id)
-            }
-          })
-        }
+          addModularItemLinks(itemNode, linkedNodes, linkPropertyName)
       }
-      //}
     })
 }
 
@@ -98,43 +93,19 @@ exports.decorateItemNodesWithRichTextModularLinks = (itemNode, allNodesOfSameLan
   Object
     .keys(itemNode)
     .forEach(propertyName => {
-      if (itemNode.summary !== undefined && propertyName === "summary"){
       const property = itemNode[propertyName]
 
-      if (property.type !== undefined && property.type === `rich_text` && property.modular_content.length > 0) {
+      if (property !== undefined && property !== null && property.type !== undefined && property.type === `rich_text` && property.modular_content.length > 0) {
         const linkPropertyName = `${propertyName}_nodes___NODE`
 
         const linkedNodes = allNodesOfSameLanguage
           .filter(node => {
-            const match = property.find(propertyNode => propertyNode.system.type === node.system.type && propertyNode.system.codename === node.system.codename)
+            const match = property.modular_content.includes(node.system.codename)
 
-            return match !== undefined && match !== null
+            return match !== undefined && match === true
           })
 
-        linkedNodes
-          .forEach(linkedNode => {
-            if (linkedNode.usedByContentItems___NODE === undefined) {
-              linkedNode.usedByContentItems___NODE = new Array()
-            }
-
-            if (!linkedNode.usedByContentItems___NODE.includes(itemNode.id)) {
-              linkedNode.usedByContentItems___NODE.push(itemNode.id)
-            }
-          })
-
-        idsOfLinkedNodes = linkedNodes.map(node => node.id)
-
-        if (itemNode[linkPropertyName] === undefined) {
-          itemNode[linkPropertyName] = idsOfLinkedNodes
-        }
-        else {
-          idsOfLinkedNodes.forEach(id => {
-            if (!itemNode[linkPropertyName].includes(id)) {
-              itemNode[linkPropertyName].push(id)
-            }
-          })
-        }
-      }
+        addModularItemLinks(itemNode, linkedNodes, linkPropertyName)
       }
     })
 }
@@ -156,10 +127,33 @@ createKcArtifactNode = (nodeId, kcArtifact, artifactKind, typeName = ``, additio
     id: nodeId,
     parent: null,
     children: [],
+    usedByContentItems___NODE: new Array(),
     internal: {
       type: `KenticoCloud${artifactKindPascalCase}${codenamePascalCase}`,
       content: nodeContent,
       contentDigest: nodeContentDigest,
     }
+  }
+}
+
+addModularItemLinks = (itemNode, linkedNodes, linkPropertyName) => {
+  linkedNodes
+    .forEach(linkedNode => {
+      if (!linkedNode.usedByContentItems___NODE.includes(itemNode.id)) {
+        linkedNode.usedByContentItems___NODE.push(itemNode.id)
+      }
+    })
+
+  const idsOfLinkedNodes = linkedNodes.map(node => node.id)
+
+  if (itemNode[linkPropertyName] === undefined) {
+    itemNode[linkPropertyName] = idsOfLinkedNodes
+  }
+  else {
+    idsOfLinkedNodes.forEach(id => {
+      if (!itemNode[linkPropertyName].includes(id)) {
+        itemNode[linkPropertyName].push(id)
+      }
+    })
   }
 }
