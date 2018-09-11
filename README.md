@@ -119,7 +119,7 @@ As with the previous example, all rich text properties with modular content also
       allKenticoCloudItemBlogpostReference {
         edges {
           node {
-            summary {
+            name___teaser_image__name {
               value
             }
             summary_nodes {
