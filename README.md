@@ -122,7 +122,7 @@ As with the previous example, all rich text properties with modular content also
           summary_nodes {
             system {
               codename
-			}
+            }
           }
         }
       }
