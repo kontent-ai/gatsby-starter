@@ -89,25 +89,25 @@ This relationship is captured by `otherLanguages` navigation property of all con
 
 Each modular content property is accompanied by a sibling property suffixed with `_nodes` that can be used to traverse to linked nodes of modular content items.
 
-	allKenticoCloudItemProjectReference {
-	  edges {
-	    node {
-	  	   related_project_references {
-	  	     name___teaser_image__name {
-	  	  	    value
-	  	     }
-	  	   }
-	  	   related_project_references_nodes {
-	  	     name___teaser_image__name {
-	  	  	    value
-	  	     }
-			  related_project_references_nodes {
-			    ...
-			  }
-	  	   }
-	    }
-	  }
-	}
+    allKenticoCloudItemProjectReference {
+      edges {
+        node {
+          related_project_references {
+            name___teaser_image__name {
+              value
+            }
+          }
+          related_project_references_nodes {
+            name___teaser_image__name {
+              value
+            }
+            related_project_references_nodes {
+            ...
+            }
+          }
+        }
+      }
+    }
 
 #### Modular content relationships in rich text
 
