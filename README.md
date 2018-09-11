@@ -122,6 +122,9 @@ As with the previous example, all rich text properties with modular content also
             name___teaser_image__name {
               value
             }
+            summary {
+              value
+            }
             summary_nodes {
               system {
                 codename
