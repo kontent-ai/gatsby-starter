@@ -102,7 +102,7 @@ Each modular content property is accompanied by a sibling property suffixed with
               value
             }
             related_project_references_nodes {
-            ...
+              ...
             }
           }
         }
