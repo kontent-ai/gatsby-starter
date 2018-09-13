@@ -135,8 +135,6 @@ As with the previous example, all rich text properties with modular content also
       }
     }
 
-**Note:** For an unknown reason, Gatsby `createNode` API currently fails to create rich text relationships for more than one node in the store. 
-
 #### Reverse links
 
 All nodes have a `usedByContentItems` property that reflects in which this node is used as modular content.
