@@ -95,7 +95,7 @@ exports.decorateItemNodesWithRichTextModularLinks = (itemNode, allNodesOfSameLan
     .forEach(propertyName => {
       const property = itemNode[propertyName]
 
-      if (property !== undefined && property !== null && property.type !== undefined && property.type === `rich_text` && property.modular_content.length > 0) {
+      if (property !== undefined && property !== null && property.type !== undefined && property.type === `rich_text` ) {
         const linkPropertyName = `${propertyName}_nodes___NODE`
 
         const linkedNodes = allNodesOfSameLanguage
