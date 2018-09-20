@@ -14,7 +14,7 @@ This repo contains a [Gatsby](https://www.gatsbyjs.org/) source plugin for [Kent
 
 Clone or fork this repo. Once it's done, navigate to the sample [app's root directory](https://github.com/Kentico/cloud-gatsby/tree/master/src) and run:
 
-`npm-install.cmd` (Windows)
+`npm-install.ps1` (Windows)
 
 or
 
