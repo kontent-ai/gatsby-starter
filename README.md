@@ -1,3 +1,5 @@
+**Note:** We now have a Gatsby v2 source plugin available at https://github.com/Kentico/gatsby-source-kentico-cloud .
+
 # Kentico Cloud Gatsby source plugin, sample app 
 
 ![Analytics](https://kentico-ga-beacon.azurewebsites.net/api/UA-69014260-4/Kentico/cloud-gatsby?pixel)
