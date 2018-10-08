@@ -1,11 +1,13 @@
 import React from 'react';
-import Link from 'gatsby-link';
+import PropTypes from 'prop-types';
+import { Link, graphql } from 'gatsby';
+import Layout from '../components/layout';
 
-export default ({ data }) => {
-  const union = new Array(...data.allKenticoCloudItemBlogpostReference.edges, ...data.allKenticoCloudItemProjectReference.edges, ...data.allKenticoCloudItemSpeakingEngagement.edges)
+const Index = ({data}) => {
+  const union = new Array(...data.allKenticoCloudItemBlogpostReference.edges, ...data.allKenticoCloudItemProjectReference.edges, ...data.allKenticoCloudItemSpeakingEngagement.edges);
   const items = union.map(({node}) => {
     if (node.fields !== undefined && node.fields !== null && node.fields.templateNameStep1 !== undefined && node.fields.templateNameStep1 !== null) {
-      const name = node.fields.templateNameStep1 === 'project-reference' ? node.name___teaser_image__name.value : node.name.value
+      const name = node.fields.templateNameStep1 === 'project-reference' ? node.name___teaser_image__name.value : node.name.value;
 
       return (
         <li key={node.id}>
@@ -13,28 +15,31 @@ export default ({ data }) => {
             {name}
           </Link>
         </li>
-        );
-    }
-    else {
+      );
+    } else {
       return (
         <li key={node.id}>
           <a href={node.url.value}>
             {node.name___teaser_image__name.value}
           </a>
         </li>
-        );
+      );
     }
   });
 
   return (
-    <div>
-      {items}
-    </div>
+    <Layout>
+      <div>
+        {items}
+      </div>
+    </Layout>
   );
-}
+};
+
+export default Index;
 
 export const query = graphql`
-  query AllDefaultLanguageItemsQuery {
+  {
     allKenticoCloudItemBlogpostReference(filter: { fields: { languageStep1: { eq: "default" }}}) {
       edges {
         node {
@@ -85,4 +90,8 @@ export const query = graphql`
       }
     }
   }
-`
+`;
+
+Index.propTypes = {
+  data: PropTypes.object,
+};

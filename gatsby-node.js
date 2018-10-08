@@ -3,8 +3,8 @@ const kcItemTypeIdentifier = `KenticoCloudItem`
 const projectReferenceTypeIdentifier = `ProjectReference`
 const speakingEngagementTypeIdentifier = `SpeakingEngagement`
 
-exports.onCreateNode = ({ node, boundActionCreators }) => {
-  const { createNodeField } = boundActionCreators
+exports.onCreateNode = ({ node, actions }) => {
+  const { createNodeField } = actions
 
   if (node.internal.type.match(/KenticoCloudItem/)) {
     let withDetailView = false
@@ -41,8 +41,8 @@ exports.onCreateNode = ({ node, boundActionCreators }) => {
   }
 };
 
-exports.createPages = ({ graphql, boundActionCreators }) => {
-  const { createPage } = boundActionCreators
+exports.createPages = ({ graphql, actions }) => {
+  const { createPage } = actions
 
   return new Promise((resolve, reject) => {
     graphql(`

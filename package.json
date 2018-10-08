@@ -1,31 +1,42 @@
 {
-  "name": "gatsby-starter-default",
-  "description": "Gatsby default starter",
+  "name": "gatsby-starter-kentico-cloud",
+  "description": "Gatsby starter site with Kentico Cloud",
   "version": "1.0.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Jan Lenoch <janl@kentico.com>",
   "dependencies": {
-    "gatsby": "^1.9.277",
-    "gatsby-link": "^1.6.46",
-    "gatsby-plugin-react-helmet": "^2.0.11",
+    "gatsby": "^2.0.10",
+    "gatsby-plugin-react-helmet": "^3.0.0",
+    "gatsby-source-kentico-cloud": "^1.0.1",
+    "react": "^16.5.1",
+    "react-dom": "^16.5.1",
     "react-helmet": "^5.2.0"
   },
   "keywords": [
-    "gatsby"
+    "gatsby",
+    "Gatsby",
+    "kentico-cloud",
+    "Kentico Cloud",
+    "starter",
+    "Starter"
   ],
   "license": "MIT",
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
-    "format": "prettier --write 'src/**/*.js'",
-    "test": "jest"
+    "test": "jest",
+    "lint": "eslint src",
+    "lint:fix": "eslint src --fix"
   },
   "devDependencies": {
-    "jest": "^23.5.0",
-    "prettier": "^1.13.7"
+    "jest": "^23.6.0",
+    "eslint": "^5.6.0",
+    "eslint-config-google": "^0.10.0",
+    "eslint-plugin-node": "^7.0.1",
+    "eslint-plugin-react": "^7.11.1"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
+    "url": "https://github.com/Kentico/gatsby-starter-kentico-cloud"
   },
   "jest": {
     "testEnvironment": "node",
