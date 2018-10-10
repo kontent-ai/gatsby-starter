@@ -1,32 +1,39 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { graphql } from 'gatsby';
+import Layout from '../components/layout';
 
-export default ({ data }) => {
-  console.log(data)
+const SpeakingEngagement = ({data}) => {
   const item = data.kenticoCloudItemSpeakingEngagement;
   return (
-    <div>
+    <Layout>
+      <div>
       <table>
-        <tr>
-          <th>Name:</th>
-          <td>{item.name.value}</td>
-        </tr>
-        <tr>
-          <th>Date:</th>
-          <td>{item.date.datetime}</td>
-        </tr>
-        <tr>
-          <th>Format:</th>
-          <td>{item.format.value.map(option => option.name)}</td>
-        </tr>
-        <tr>
-          <th>URL/location:</th>
-          <td>{item.url_location.value}</td>
-        </tr>
-      </table>
-    </div>
+          <tbody>
+            <tr>
+              <th>Name:</th>
+              <td>{item.name.value}</td>
+            </tr>
+            <tr>
+              <th>Date:</th>
+              <td>{item.date.datetime}</td>
+            </tr>
+            <tr>
+              <th>Format:</th>
+              <td>{item.format.value.map((option) => option.name)}</td>
+            </tr>
+            <tr>
+              <th>URL/location:</th>
+              <td>{item.url_location.value}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </Layout>
   );
+};
 
-}
+export default SpeakingEngagement;
 
 export const query = graphql`
   query speakingEngagementQuery($slugStep2: String!) {
@@ -55,4 +62,8 @@ export const query = graphql`
       }
     }
   }
-`
+`;
+
+SpeakingEngagement.propTypes = {
+  data: PropTypes.object,
+};
