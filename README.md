@@ -58,4 +58,6 @@ just rebuild the site using `npm run develop` or `gatsby develop` (should you ha
 
 This [error](https://github.com/gatsbyjs/gatsby/issues/8053) is caused by Gatsby having difficulties with class instances that our [JS SDK](https://github.com/Enngage/kentico-cloud-js) produces. It can be worked around by running `npm run develop` or `gatsby develop` once more.
 
+We'll work with Gatsby to see if the support can be brought to Gatsby or if it needs to be worked around in the source plugin.
+
 ![Analytics](https://kentico-ga-beacon.azurewebsites.net/api/UA-69014260-4/Kentico/gatsby-source-kentico-cloud?pixel)
