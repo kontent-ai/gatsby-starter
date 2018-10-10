@@ -56,7 +56,6 @@ In case you encounter the following error:
 
 just rebuild the site using `npm run develop` or `gatsby develop` (should you have Gatsby CLI installed).
 
-This [error](https://github.com/gatsbyjs/gatsby/issues/8053) occurs rather randomly; mostly due to issues with building of the internal schema. If it cannot be solved by rebuilding with `npm run develop` or raising the `version` field in the [package.json](https://github.com/Kentico/cloud-gatsby/blob/master/plugins/gatsby-source-kentico-cloud/package.json) of the source plugin, then you should look for other root causes (not related to [building of the schema](https://github.com/gatsbyjs/gatsby/issues/2674#issuecomment-340510736)).
-
+This [error](https://github.com/gatsbyjs/gatsby/issues/8053) is caused by Gatsby having difficulties with class instances that our JS SDK produces. It can be worked around by running `npm run develop` or `gatsby develop` once more.
 
 ![Analytics](https://kentico-ga-beacon.azurewebsites.net/api/UA-69014260-4/Kentico/gatsby-source-kentico-cloud?pixel)
