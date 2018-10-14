@@ -6,6 +6,7 @@
   "dependencies": {
     "gatsby": "^2.0.22",
     "gatsby-plugin-react-helmet": "^3.0.0",
+    "gatsby-source-kentico-cloud": "^1.1.0",
     "react": "^16.5.1",
     "react-dom": "^16.5.1",
     "react-helmet": "^5.2.0"
