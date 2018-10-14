@@ -8,20 +8,20 @@ const ProjectReference = ({data}) => {
   return (
     <Layout>
       <div>
-        <img src={item.name___teaser_image__teaser_image.assets[0].url} />
+        <img src={item.elements.name___teaser_image__teaser_image.value[0].url} />
           <table>
             <tbody>
             <tr>
               <th>Name:</th>
-              <td>{item.name___teaser_image__name.value}</td>
+              <td>{item.elements.name___teaser_image__name.value}</td>
             </tr>
             <tr>
               <th>URL:</th>
-              <td>{item.url.value}</td>
+              <td>{item.elements.url.value}</td>
             </tr>
             <tr>
               <th>Duration:</th>
-              <td>{item.started_at.datetime} &ndash; {item.finished_at.datetime}</td>
+              <td>{item.elements.started_at.value ? item.elements.started_at.value : `Unknown starting date`} &ndash; {item.elements.finished_at.value ? item.elements.finished_at.value : `until now`}</td>
             </tr>
           </tbody>
         </table>
@@ -43,22 +43,24 @@ export const query = graphql`
       system {
         name
       }
-      name___teaser_image__name {
-        value
-      }
-      name___teaser_image__teaser_image {
-        assets {
-          url
+      elements {
+        name___teaser_image__teaser_image {
+          value {
+            url
+          }
         }
-      }
-      url {
-        value
-      }
-      started_at {
-        datetime
-      }
-      finished_at {
-        datetime
+        name___teaser_image__name {
+          value
+        }
+        url {
+          value
+        }
+        started_at {
+          value
+        }
+        finished_at {
+          value
+        }
       }
     }
   }

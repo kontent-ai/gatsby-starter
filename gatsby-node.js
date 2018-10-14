@@ -29,7 +29,7 @@ exports.onCreateNode = ({ node, actions }) => {
       createNodeField({
         node,
         name: `slugStep1`,
-        value: node.url_slug.value
+        value: node.elements.url_slug.value
       })
     }
 
