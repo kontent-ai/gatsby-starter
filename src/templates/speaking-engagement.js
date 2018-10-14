@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from 'moment';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 import Layout from '../components/layout';
@@ -16,7 +17,7 @@ const SpeakingEngagement = ({data}) => {
             </tr>
             <tr>
               <th>Date:</th>
-              <td>{item.date.datetime}</td>
+              <td>{moment(item.date.datetime).format('LLL')}</td>
             </tr>
             <tr>
               <th>Format:</th>

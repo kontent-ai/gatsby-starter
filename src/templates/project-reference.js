@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from 'moment';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 import Layout from '../components/layout';
@@ -21,7 +22,7 @@ const ProjectReference = ({data}) => {
             </tr>
             <tr>
               <th>Duration:</th>
-              <td>{item.started_at.datetime} &ndash; {item.finished_at.datetime}</td>
+              <td>{moment(item.started_at.datetime).format('LLL')} &ndash; {moment(item.finished_at.datetime).format('LLL')}</td>
             </tr>
           </tbody>
         </table>

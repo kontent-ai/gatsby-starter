@@ -7,6 +7,7 @@
     "gatsby": "^2.0.10",
     "gatsby-plugin-react-helmet": "^3.0.0",
     "gatsby-source-kentico-cloud": "^1.0.1",
+    "moment": "^2.22.2",
     "react": "^16.5.1",
     "react-dom": "^16.5.1",
     "react-helmet": "^5.2.0"
