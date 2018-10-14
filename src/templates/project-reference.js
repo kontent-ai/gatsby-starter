@@ -5,6 +5,10 @@ import Layout from '../components/layout';
 
 const ProjectReference = ({data}) => {
   const item = data.kenticoCloudItemProjectReference;
+  const formatDate = function(time) {
+     return new Date(time).toLocaleString('en-US', { year: 'numeric', month: 'numeric', day: 'numeric',
+                                                     hour: 'numeric', minute: 'numeric', hour12: true });
+  }
   return (
     <Layout>
       <div>
@@ -21,7 +25,7 @@ const ProjectReference = ({data}) => {
             </tr>
             <tr>
               <th>Duration:</th>
-              <td>{item.started_at.datetime} &ndash; {item.finished_at.datetime}</td>
+              <td>{formatDate(item.started_at.datetime)} &ndash; {formatDate(item.finished_at.datetime)}</td>
             </tr>
           </tbody>
         </table>

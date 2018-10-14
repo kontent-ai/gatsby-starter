@@ -5,6 +5,10 @@ import Layout from '../components/layout';
 
 const SpeakingEngagement = ({data}) => {
   const item = data.kenticoCloudItemSpeakingEngagement;
+  const formatDate = function(time) {
+     return new Date(time).toLocaleString('en-US', { year: 'numeric', month: 'numeric', day: 'numeric',
+                                                     hour: 'numeric', minute: 'numeric', hour12: true });
+  }
   return (
     <Layout>
       <div>
@@ -16,7 +20,7 @@ const SpeakingEngagement = ({data}) => {
             </tr>
             <tr>
               <th>Date:</th>
-              <td>{item.date.datetime}</td>
+              <td>{formatDate(item.date.datetime)}</td>
             </tr>
             <tr>
               <th>Format:</th>
