@@ -12,19 +12,19 @@ const SpeakingEngagement = ({data}) => {
           <tbody>
             <tr>
               <th>Name:</th>
-              <td>{item.name.value}</td>
+              <td>{item.elements.name.value}</td>
             </tr>
             <tr>
               <th>Date:</th>
-              <td>{item.date.datetime}</td>
+              <td>{item.elements.date.value ? item.elements.date.value : `Unknown date`}</td>
             </tr>
             <tr>
               <th>Format:</th>
-              <td>{item.format.value.map((option) => option.name)}</td>
+              <td>{item.elements.format.value.map((option) => option.name)}</td>
             </tr>
             <tr>
               <th>URL/location:</th>
-              <td>{item.url_location.value}</td>
+              <td>{item.elements.url_location.value}</td>
             </tr>
           </tbody>
         </table>
@@ -46,19 +46,21 @@ export const query = graphql`
       system {
         name
       }
-      name {
-        value
-      }
-      date {
-        datetime
-      }
-      format {
-        value {
-          name
+      elements {
+        name {
+          value
         }
-      }
-      url_location {
-        value
+        date {
+          value
+        }
+        format {
+          value {
+            name
+          }
+        }
+        url_location {
+          value
+        }
       }
     }
   }

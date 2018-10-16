@@ -4,9 +4,9 @@
   "version": "1.0.0",
   "author": "Jan Lenoch <janl@kentico.com>",
   "dependencies": {
-    "gatsby": "^2.0.10",
+    "gatsby": "^2.0.22",
     "gatsby-plugin-react-helmet": "^3.0.0",
-    "gatsby-source-kentico-cloud": "^1.0.1",
+    "gatsby-source-kentico-cloud": "^2.0.0-beta",
     "react": "^16.5.1",
     "react-dom": "^16.5.1",
     "react-helmet": "^5.2.0"
@@ -28,11 +28,11 @@
     "lint:fix": "eslint src --fix"
   },
   "devDependencies": {
-    "jest": "^23.6.0",
-    "eslint": "^5.6.0",
+    "eslint": "^5.7.0",
     "eslint-config-google": "^0.10.0",
     "eslint-plugin-node": "^7.0.1",
-    "eslint-plugin-react": "^7.11.1"
+    "eslint-plugin-react": "^7.11.1",
+    "jest": "^23.6.0"
   },
   "repository": {
     "type": "git",

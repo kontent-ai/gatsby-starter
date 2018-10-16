@@ -7,7 +7,7 @@ const Index = ({data}) => {
   const union = new Array(...data.allKenticoCloudItemBlogpostReference.edges, ...data.allKenticoCloudItemProjectReference.edges, ...data.allKenticoCloudItemSpeakingEngagement.edges);
   const items = union.map(({node}) => {
     if (node.fields !== undefined && node.fields !== null && node.fields.templateNameStep1 !== undefined && node.fields.templateNameStep1 !== null) {
-      const name = node.fields.templateNameStep1 === 'project-reference' ? node.name___teaser_image__name.value : node.name.value;
+      const name = node.fields.templateNameStep1 === 'project-reference' ? node.elements.name___teaser_image__name.value : node.elements.name.value;
 
       return (
         <li key={node.id}>
@@ -19,8 +19,8 @@ const Index = ({data}) => {
     } else {
       return (
         <li key={node.id}>
-          <a href={node.url.value}>
-            {node.name___teaser_image__name.value}
+          <a href={node.elements.url.value}>
+            {node.elements.name___teaser_image__name.value}
           </a>
         </li>
       );
@@ -47,11 +47,13 @@ export const query = graphql`
             languageStep1
           }
           id
-          url {
-            value
-          }
-          name___teaser_image__name {
-            value
+          elements {
+            url {
+              value
+            }
+            name___teaser_image__name {
+              value
+            }
           }
         }
       }
@@ -65,11 +67,13 @@ export const query = graphql`
             languageStep1
           }
           id
-          url {
-            value
-          }
-          name___teaser_image__name {
-            value
+          elements {
+            url {
+              value
+            }
+            name___teaser_image__name {
+              value
+            }
           }
         }
       }
@@ -83,8 +87,10 @@ export const query = graphql`
             languageStep1
           }
           id
-          name {
-            value
+          elements {
+            name {
+              value
+            }
           }
         }
       }

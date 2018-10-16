@@ -36,28 +36,14 @@ Now, run:
 
 This will bootstrap the site, build all static pages and start the site at http://localhost:8000 . You'll also be able to test arbitrary GraphQL queries in the GraphiQL interface via http://localhost:8000/___graphql.
 
-**Note:** You may encounter a [known issue](#troubleshooting) in Gatsby. Please rebuild your project once again to get around it.
-
 ## Developing
 
-* [Visual Studio Code](https://code.visualstudio.com/)
+You may use any IDE, however, we've added a [settings file](https://github.com/Kentico/gatsby-starter-kentico-cloud/blob/master/.vscode/launch.json) for [Visual Studio Code](https://code.visualstudio.com/) for easier debugging.
 
 ### Experimenting
 
 Of all the artifacts of Kentico Cloud, the starter site only displays content items and only in the default language. But, our [source plugin](https://github.com/Kentico/gatsby-source-kentico-cloud) also provides content types and items in non-default languages. The plugin links them all so that these data can be fetched in one GraphQL query.
 
 Check out the [source plugin](https://github.com/Kentico/gatsby-source-kentico-cloud#features) for more details on which kinds of data and relationships it supports.
-
-### Troubleshooting
-
-In case you encounter the following error:
-
-`GraphQL Error Unknown field 'system' on type '...'`
-
-just rebuild the site using `npm run develop` or `gatsby develop` (should you have Gatsby CLI installed).
-
-This [error](https://github.com/gatsbyjs/gatsby/issues/8053) is caused by Gatsby having difficulties with class instances that our [JS SDK](https://github.com/Enngage/kentico-cloud-js) produces. It can be worked around by running `npm run develop` or `gatsby develop` once more.
-
-We'll work with Gatsby to see if the support can be brought to Gatsby or if it needs to be worked around in the source plugin.
 
 ![Analytics](https://kentico-ga-beacon.azurewebsites.net/api/UA-69014260-4/Kentico/gatsby-source-kentico-cloud?pixel)
