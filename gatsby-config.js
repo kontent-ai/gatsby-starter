@@ -7,17 +7,15 @@ module.exports = {
     {
       resolve: 'gatsby-source-kentico-cloud',
       options: {
-        kcDeliveryEndpointUrl: 'https://deliver.kenticocloud.com',
-        kcProjectId: '5ac93d1e-567d-01e6-e3b7-ac435f77b907',
-        kcLanguageCodenames: [
+        deliveryClientConfig: {
+          projectId: '5ac93d1e-567d-01e6-e3b7-ac435f77b907',
+        },
+        languageCodenames: [
           'default',
           'de-DE',
           'cs-CZ',
-        ],
-        queryConfig: {
-          usePreviewMode: false,
-        },
-      },
-    },
-  ],
+        ]
+      }
+    }
+  ]
 };
