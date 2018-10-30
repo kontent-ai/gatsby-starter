@@ -2,9 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 import Layout from '../components/layout';
+import { formatDate } from '../helpers/date-time';
 
 const ProjectReference = ({data}) => {
   const item = data.kenticoCloudItemProjectReference;
+
   return (
     <Layout>
       <div>
@@ -21,7 +23,7 @@ const ProjectReference = ({data}) => {
             </tr>
             <tr>
               <th>Duration:</th>
-              <td>{item.elements.started_at.value ? item.elements.started_at.value : `Unknown starting date`} &ndash; {item.elements.finished_at.value ? item.elements.finished_at.value : `until now`}</td>
+              <td>{item.elements.started_at.value ? formatDate(item.elements.started_at.value) : `Unknown starting date`} &ndash; {item.elements.finished_at.value ? formatDate(item.elements.finished_at.value) : `until now`}</td>
             </tr>
           </tbody>
         </table>

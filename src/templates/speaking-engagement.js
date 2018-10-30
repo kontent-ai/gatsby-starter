@@ -2,9 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 import Layout from '../components/layout';
+import { formatDate } from '../helpers/date-time';
 
 const SpeakingEngagement = ({data}) => {
   const item = data.kenticoCloudItemSpeakingEngagement;
+
   return (
     <Layout>
       <div>
@@ -16,7 +18,7 @@ const SpeakingEngagement = ({data}) => {
             </tr>
             <tr>
               <th>Date:</th>
-              <td>{item.elements.date.value ? item.elements.date.value : `Unknown date`}</td>
+              <td>{item.elements.date.value ? formatDate(item.elements.date.value) : `Unknown date`}</td>
             </tr>
             <tr>
               <th>Format:</th>
