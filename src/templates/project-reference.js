@@ -33,13 +33,13 @@ const ProjectReference = ({data}) => {
 export default ProjectReference;
 
 export const query = graphql`
-  query projectReferenceQuery($slugStep2: String!) {
+  query projectReferenceQuery($slug: String!) {
     site {
       siteMetadata {
         title
       }
     }
-    kenticoCloudItemProjectReference(fields: { slugStep1: { eq: $slugStep2 }}) {
+    kenticoCloudItemProjectReference(fields: { slug: { eq: $slug }}) {
       system {
         name
       }

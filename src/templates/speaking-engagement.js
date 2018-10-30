@@ -36,13 +36,13 @@ const SpeakingEngagement = ({data}) => {
 export default SpeakingEngagement;
 
 export const query = graphql`
-  query speakingEngagementQuery($slugStep2: String!) {
+  query speakingEngagementQuery($slug: String!) {
     site {
       siteMetadata {
         title
       }
     }
-    kenticoCloudItemSpeakingEngagement(fields: { slugStep1: { eq: $slugStep2 }}) {
+    kenticoCloudItemSpeakingEngagement(fields: { slug: { eq: $slug }}) {
       system {
         name
       }

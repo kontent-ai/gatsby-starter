@@ -6,12 +6,12 @@ import Layout from '../components/layout';
 const Index = ({data}) => {
   const union = new Array(...data.allKenticoCloudItemBlogpostReference.edges, ...data.allKenticoCloudItemProjectReference.edges, ...data.allKenticoCloudItemSpeakingEngagement.edges);
   const items = union.map(({node}) => {
-    if (node.fields !== undefined && node.fields !== null && node.fields.templateNameStep1 !== undefined && node.fields.templateNameStep1 !== null) {
-      const name = node.fields.templateNameStep1 === 'project-reference' ? node.elements.name___teaser_image__name.value : node.elements.name.value;
+    if (node.fields !== undefined && node.fields !== null && node.fields.templateName !== undefined && node.fields.templateName !== null) {
+      const name = node.fields.templateName === `project-reference` ? node.elements.name___teaser_image__name.value : node.elements.name.value;
 
       return (
         <li key={node.id}>
-          <Link to={`../${node.fields.templateNameStep1}/${node.fields.slugStep1}`}>
+          <Link to={`../${node.fields.templateName}/${node.fields.slug}`}>
             {name}
           </Link>
         </li>
@@ -40,11 +40,11 @@ export default Index;
 
 export const query = graphql`
   {
-    allKenticoCloudItemBlogpostReference(filter: { fields: { languageStep1: { eq: "default" }}}) {
+    allKenticoCloudItemBlogpostReference(filter: { fields: { language: { eq: "default" }}}) {
       edges {
         node {
           fields {
-            languageStep1
+            language
           }
           id
           elements {
@@ -58,13 +58,13 @@ export const query = graphql`
         }
       }
     }
-    allKenticoCloudItemProjectReference(filter: { fields: { languageStep1: { eq: "default" }}}) {
+    allKenticoCloudItemProjectReference(filter: { fields: { language: { eq: "default" }}}) {
       edges {
         node {
           fields {
-            templateNameStep1
-            slugStep1
-            languageStep1
+            templateName
+            slug
+            language
           }
           id
           elements {
@@ -78,13 +78,13 @@ export const query = graphql`
         }
       }
     }
-    allKenticoCloudItemSpeakingEngagement(filter: { fields: { languageStep1: { eq: "default" }}}) {
+    allKenticoCloudItemSpeakingEngagement(filter: { fields: { language: { eq: "default" }}}) {
       edges {
         node {
           fields {
-            templateNameStep1
-            slugStep1
-            languageStep1
+            templateName
+            slug
+            language
           }
           id
           elements {

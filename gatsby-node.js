@@ -1,48 +1,48 @@
-const path = require(`path`)
-const kcItemTypeIdentifier = `KenticoCloudItem`
-const projectReferenceTypeIdentifier = `ProjectReference`
-const speakingEngagementTypeIdentifier = `SpeakingEngagement`
+const path = require(`path`);
+const kcItemTypeIdentifier = `KenticoCloudItem`;
+const projectReferenceTypeIdentifier = `ProjectReference`;
+const speakingEngagementTypeIdentifier = `SpeakingEngagement`;
 
 exports.onCreateNode = ({ node, actions }) => {
-  const { createNodeField } = actions
+  const { createNodeField } = actions;
 
   if (node.internal.type.match(/KenticoCloudItem/)) {
-    let withDetailView = false
-    let templateName
+    let withDetailView = false;
+    let templateName;
 
     if (node.internal.type === `${kcItemTypeIdentifier}${projectReferenceTypeIdentifier}`) {
-      templateName = `project-reference`
-      withDetailView = true
+      templateName = `project-reference`;
+      withDetailView = true;
     }
     else if (node.internal.type === `${kcItemTypeIdentifier}${speakingEngagementTypeIdentifier}`) {
-      templateName = `speaking-engagement`
-      withDetailView = true
+      templateName = `speaking-engagement`;
+      withDetailView = true;
     }
 
     if (withDetailView) {
       createNodeField({
         node,
-        name: `templateNameStep1`,
+        name: `templateName`,
         value: templateName
-      })
+      });
 
       createNodeField({
         node,
-        name: `slugStep1`,
+        name: `slug`,
         value: node.elements.url_slug.value
-      })
+      });
     }
 
     createNodeField({
       node,
-      name: `languageStep1`,
+      name: `language`,
       value: node.system.language
-    })
+    });
   }
 };
 
 exports.createPages = ({ graphql, actions }) => {
-  const { createPage } = actions
+  const { createPage } = actions;
 
   return new Promise((resolve, reject) => {
     graphql(`
@@ -51,7 +51,7 @@ exports.createPages = ({ graphql, actions }) => {
         edges {
           node {
             fields {
-              languageStep1
+              language
             }
           }
         }
@@ -60,9 +60,9 @@ exports.createPages = ({ graphql, actions }) => {
         edges {
           node {
             fields {
-              templateNameStep1
-              slugStep1
-              languageStep1
+              templateName
+              slug
+              language
             }
           }
         }
@@ -71,31 +71,32 @@ exports.createPages = ({ graphql, actions }) => {
         edges {
           node {
             fields {
-              templateNameStep1
-              slugStep1
-              languageStep1
+              templateName
+              slug
+              language
             }
           }
         }
       }
     }
     `).then(result => {
-        const union = new Array(...result.data.allKenticoCloudItemProjectReference.edges, ...result.data.allKenticoCloudItemSpeakingEngagement.edges)
+        const union = new Array(...result.data.allKenticoCloudItemProjectReference.edges, ...result.data.allKenticoCloudItemSpeakingEngagement.edges);
+
         union.forEach(({ node }) => {
-          if (node.fields !== undefined && node.fields !== null && node.fields.templateNameStep1 !== undefined && node.fields.templateNameStep1 !== null) {
+          if (node.fields !== undefined && node.fields !== null && node.fields.templateName !== undefined && node.fields.templateName !== null) {
             createPage({
-              path: `${node.fields.templateNameStep1}/${node.fields.slugStep1}`,
-              component: path.resolve(`./src/templates/${node.fields.templateNameStep1}.js`),
+              path: `${node.fields.templateName}/${node.fields.slug}`,
+              component: path.resolve(`./src/templates/${node.fields.templateName}.js`),
               context: {
                 // Data passed to context is available in page queries as GraphQL variables.
-                templateNameStep2: node.fields.templateNameStep1,
-                slugStep2: node.fields.slugStep1,
-                languageStep2: node.fields.languageStep1
+                templateName: node.fields.templateName,
+                slug: node.fields.slug,
+                language: node.fields.language
               },
-            })
+            });
           }
-        })
-        resolve()
-      })
-  })
+        });
+        resolve();
+      });
+  });
 };
