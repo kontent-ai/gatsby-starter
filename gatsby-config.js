@@ -1,19 +1,17 @@
 module.exports = {
   siteMetadata: {
-    title: 'Gatsby starter site with Kentico Cloud',
+    title: `Gatsby starter site with Kentico Cloud`,
   },
   plugins: [
-    'gatsby-plugin-react-helmet',
+    `gatsby-plugin-react-helmet`,
     {
-      resolve: 'gatsby-source-kentico-cloud',
+      resolve: `gatsby-source-kentico-cloud`,
       options: {
         deliveryClientConfig: {
-          projectId: '5ac93d1e-567d-01e6-e3b7-ac435f77b907',
+          projectId: `c461ba35-fd9d-000f-17ed-2054c3a4cbf1`,
         },
         languageCodenames: [
-          'default',
-          'de-DE',
-          'cs-CZ',
+          `en-US`
         ]
       }
     }
