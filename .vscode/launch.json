@@ -52,7 +52,7 @@
           "DEBUG": "gatsby:*" 
         },
         "console": "integratedTerminal",
-        "sourceMaps": true,
+        "sourceMaps": false,
         "outFiles": []
       }
     ]
