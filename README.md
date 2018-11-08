@@ -16,10 +16,10 @@ The preferred way is to use Gatsby CLI `gatsby new` command, but you can of cour
 
 Make sure you have Gatsby CLI installed via `npm list -g gatsby-cli`. If not, you can install CLI via `npm install --global gatsby-cli`.
 
-Then, navigate to your projects folder and run `gatsby new [subfolder name] https://github.com/Kentico/gatsby-starter-kentico-cloud`. Replace `[subfolder name]` with your project folder's name. The CLI tool will essentially do three things:
+Then, navigate to your projects directory and run `gatsby new [subdirectory name] https://github.com/Kentico/gatsby-starter-kentico-cloud`. Replace `[subdirctory name]` with your project directory's name. The CLI tool will essentially do three things:
 
-* create a subfolder
-* clone the starter site codefiles into that subfolder
+* create a subdirectory
+* clone the starter site codefiles into that subdirectory
 * run `npm install` to get all dependencies for you
 
 ### Clone or fork the repo
@@ -39,6 +39,8 @@ This will bootstrap the site, build all static pages and start the site at http:
 ## Developing
 
 You may use any IDE, however, we've added a [settings file](https://github.com/Kentico/gatsby-starter-kentico-cloud/blob/master/.vscode/launch.json) for [Visual Studio Code](https://code.visualstudio.com/) for easier debugging.
+
+To get a smooth debugging experience, you can temporarily copy the `gatsby-source-kentico-cloud` [directory](https://github.com/Kentico/gatsby-source-kentico-cloud) of the source plugin to the `/plugins` directory of your site. Then, move the `gatsby-node.js` and `normalize.js` files from `/plugins/gatsby-source-kentico-cloud/src` to `/plugins/gatsby-source-kentico-cloud` (up one level).
 
 ### Experimenting
 
