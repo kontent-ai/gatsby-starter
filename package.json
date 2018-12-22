@@ -4,11 +4,11 @@
   "version": "1.0.0",
   "author": "Jan Lenoch <janl@kentico.com>",
   "dependencies": {
-    "gatsby": "^2.0.22",
-    "gatsby-plugin-react-helmet": "^3.0.0",
+    "gatsby": "^2.0.50",
+    "gatsby-plugin-react-helmet": "^3.0.2",
     "gatsby-source-kentico-cloud": "^2.1.0",
-    "react": "^16.5.1",
-    "react-dom": "^16.5.1",
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3",
     "react-helmet": "^5.2.0"
   },
   "keywords": [
