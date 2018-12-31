@@ -1,15 +1,17 @@
 {
   "name": "gatsby-starter-kentico-cloud",
+  "version": "1.1.0",
   "description": "Gatsby starter site with Kentico Cloud",
-  "version": "1.0.0",
-  "author": "Jan Lenoch <janl@kentico.com>",
-  "dependencies": {
-    "gatsby": "^2.0.50",
-    "gatsby-plugin-react-helmet": "^3.0.2",
-    "gatsby-source-kentico-cloud": "^2.1.0",
-    "react": "^16.6.3",
-    "react-dom": "^16.6.3",
-    "react-helmet": "^5.2.0"
+  "scripts": {
+    "build": "gatsby build",
+    "develop": "gatsby develop",
+    "test": "jest",
+    "lint": "eslint src",
+    "lint:fix": "eslint src --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Kentico/gatsby-starter-kentico-cloud"
   },
   "keywords": [
     "gatsby",
@@ -19,13 +21,15 @@
     "starter",
     "Starter"
   ],
+  "author": "Jan Lenoch <janl@kentico.com>",
   "license": "MIT",
-  "scripts": {
-    "build": "gatsby build",
-    "develop": "gatsby develop",
-    "test": "jest",
-    "lint": "eslint src",
-    "lint:fix": "eslint src --fix"
+  "dependencies": {
+    "gatsby": "^2.0.22",
+    "gatsby-plugin-react-helmet": "^3.0.0",
+    "gatsby-source-kentico-cloud": "^2.1.4-beta",
+    "react": "^16.5.1",
+    "react-dom": "^16.5.1",
+    "react-helmet": "^5.2.0"
   },
   "devDependencies": {
     "eslint": "^5.7.0",
@@ -33,10 +37,6 @@
     "eslint-plugin-node": "^7.0.1",
     "eslint-plugin-react": "^7.11.1",
     "jest": "^23.6.0"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/Kentico/gatsby-starter-kentico-cloud"
   },
   "jest": {
     "testEnvironment": "node",
