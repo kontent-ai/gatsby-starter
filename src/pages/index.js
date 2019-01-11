@@ -4,9 +4,10 @@ import { Link, graphql } from 'gatsby';
 import Layout from '../components/layout';
 
 const Index = ({data}) => {
-  const union = new Array(...data.allKenticoCloudItemBlogpostReference.edges, ...data.allKenticoCloudItemProjectReference.edges, ...data.allKenticoCloudItemSpeakingEngagement.edges);
+  const union = data.allKenticoCloudItemBlogpostReference.edges.concat(data.allKenticoCloudItemProjectReference.edges).concat(data.allKenticoCloudItemSpeakingEngagement.edges);
+
   const items = union.map(({node}) => {
-    if (node.fields !== undefined && node.fields !== null && node.fields.templateName !== undefined && node.fields.templateName !== null) {
+    if (node.fields && node.fields !== null && node.fields.templateName && node.fields.templateName !== null) {
       const name = node.fields.templateName === `project-reference` ? node.elements.name___teaser_image__name.value : node.elements.name.value;
 
       return (

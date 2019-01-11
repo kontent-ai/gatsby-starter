@@ -1,12 +1,11 @@
 const path = require(`path`);
+const _ = require(`lodash`);
 const kcItemTypeIdentifier = `KenticoCloudItem`;
 const projectReferenceTypeIdentifier = `ProjectReference`;
 const speakingEngagementTypeIdentifier = `SpeakingEngagement`;
 
-exports.onCreateNode = ({ node, actions }) => {
-  const { createNodeField } = actions;
-
-  if (node.internal.type.match(/KenticoCloudItem/)) {
+exports.onCreateNode = ({ node, actions: { createNodeField } }) => {
+  if (_.has(node, `internal.type`) && _.isString(node.internal.type) && node.internal.type.startsWith(`KenticoCloudItem`)) {
     let withDetailView = false;
     let templateName;
 
@@ -80,10 +79,10 @@ exports.createPages = ({ graphql, actions }) => {
       }
     }
     `).then(result => {
-        const union = new Array(...result.data.allKenticoCloudItemProjectReference.edges, ...result.data.allKenticoCloudItemSpeakingEngagement.edges);
+        const union = result.data.allKenticoCloudItemProjectReference.edges.concat(result.data.allKenticoCloudItemSpeakingEngagement.edges);
 
         union.forEach(({ node }) => {
-          if (node.fields !== undefined && node.fields !== null && node.fields.templateName !== undefined && node.fields.templateName !== null) {
+            if (_.has(node, `fields.templateName`) && !_.isNil(node.fields.templateName)) {
             createPage({
               path: `${node.fields.templateName}/${node.fields.slug}`,
               component: path.resolve(`./src/templates/${node.fields.templateName}.js`),
