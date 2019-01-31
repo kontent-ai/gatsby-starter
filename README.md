@@ -44,7 +44,7 @@ To get a smooth debugging experience, you can temporarily copy the `gatsby-sourc
 
 ### Using the Kentico Cloud JavaScript SDK configuration object
 
-The source plugin used by this starter in turn uses the [JavaScript SDK](https://github.com/Enngage/kentico-cloud-js) in the background. You can put the [configuration object](https://github.com/Enngage/kentico-cloud-js/blob/master/doc/delivery.md#client-configuration) of the JS SDK into the `deliveryClientConfig` property of the [gatsby-config.js](https://github.com/Kentico/gatsby-starter-kentico-cloud/blob/master/gatsby-config.js) file.
+The source plugin used by this starter in turn uses the [Kentico Cloud Delivery SDK](https://github.com/Kentico/kentico-cloud-js/tree/master/packages/delivery) in the background. You can put the [configuration object](https://github.com/Kentico/kentico-cloud-js/blob/master/packages/delivery/DOCS.md#client-configuration) of the SDK into the `deliveryClientConfig` property of the [gatsby-config.js](https://github.com/Kentico/gatsby-starter-kentico-cloud/blob/master/gatsby-config.js) file.
 
 ### Experimenting
 
