@@ -1,5 +1,7 @@
 # Gatsby starter site with Kentico Cloud
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/78b48df8-68df-4b9a-9dfc-91803d8a77d8/deploy-status)](https://app.netlify.com/sites/gatsby-starter-kentico-cloud/deploys)
+
 This repo contains a [Gatsby v2 starter site](https://www.gatsbyjs.org/starters/Kentico/gatsby-starter-kentico-cloud/) preconfigured with [Kentico Cloud](https://www.kenticocloud.com/) [source plugin](https://www.npmjs.com/package/gatsby-source-kentico-cloud). The site portrays a personal site of a fictional technical evangelist that attends user groups, writes blog posts and implements projects.
 
 ![Gatsby starter site with Kentico Cloud](https://i.imgur.com/xvASA35.png)
