@@ -7,3 +7,7 @@ node_modules
 
 # Local plugins used for development
 /plugins
+
+# Yarn Logs
+yarn-debug.log*
+yarn-error.log*
