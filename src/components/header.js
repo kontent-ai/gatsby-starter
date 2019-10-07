@@ -1,7 +1,8 @@
+// Importing the requirements
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
-
+// Setting Header styles
 const Header = ({siteTitle}) => (
   <div
     style={{
@@ -34,5 +35,5 @@ const Header = ({siteTitle}) => (
 Header.propTypes = {
   siteTitle: PropTypes.string,
 };
-
+// exporting the header
 export default Header;
