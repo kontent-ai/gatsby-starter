@@ -25,19 +25,19 @@ Then, navigate to your projects directory and run `gatsby new [subdirectory name
 
 * create a subdirectory
 * clone the starter site codefiles into that subdirectory
-* run `npm install` to get all dependencies for you
+* run `yarn install` to get all dependencies for you
 
 ### Clone or fork the repo
 
 [Clone](https://git-scm.com/docs/git-clone) or [fork](https://hub.github.com/hub-fork.1.html) this repo. Once it's done, navigate to the [app's root directory](https://github.com/Kentico/gatsby-starter-kentico-cloud) and run:
 
-`npm install`
+`yarn install`
 
 ### Run the starter site
 
 Now, run:
 
-`npm run develop` (or `gatsby develop`, should you have the Gatsby CLI installed)
+`yarn develop` (or `gatsby develop`, should you have the Gatsby CLI installed)
 
 This will bootstrap the site, build all static pages and start the site at http://localhost:8000 . You'll also be able to test arbitrary GraphQL queries in the GraphiQL interface via http://localhost:8000/___graphql.
 
