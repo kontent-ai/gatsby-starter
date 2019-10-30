@@ -41,11 +41,27 @@ export default Index;
 
 export const query = graphql`
   {
-    allKontentItemBlogpostReference(filter: { fields: { language: { eq: "default" }}}) {
+    allKontentItemBlogpostReference(filter: {preferred_language: {eq: "default"}}) {
+      edges {
+        node {
+          id
+          elements {
+            url {
+              value
+            }
+            name___teaser_image__name {
+              value
+            }
+          }
+        }
+      }
+    }
+    allKontentItemProjectReference(filter: {preferred_language: {eq: "default"}}) {
       edges {
         node {
           fields {
-            language
+            templateName
+            slug
           }
           id
           elements {
@@ -59,33 +75,12 @@ export const query = graphql`
         }
       }
     }
-    allKontentItemProjectReference(filter: { fields: { language: { eq: "default" }}}) {
+    allKontentItemSpeakingEngagement(filter: {preferred_language: {eq: "default"}}) {
       edges {
         node {
           fields {
             templateName
             slug
-            language
-          }
-          id
-          elements {
-            url {
-              value
-            }
-            name___teaser_image__name {
-              value
-            }
-          }
-        }
-      }
-    }
-    allKontentItemSpeakingEngagement(filter: { fields: { language: { eq: "default" }}}) {
-      edges {
-        node {
-          fields {
-            templateName
-            slug
-            language
           }
           id
           elements {

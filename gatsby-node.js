@@ -43,17 +43,10 @@ exports.onCreateNode = ({ node, actions: { createNodeField } }) => {
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions;
 
-  return new Promise((resolve, _reject) => {
+  return new Promise((resolve) => {
     graphql(`
     {
-      allKontentItemBlogpostReference {
-        nodes {
-          fields {
-            language
-          }
-        }
-      }
-      allKontentItemProjectReference {
+      allKontentItemProjectReference (filter: {preferred_language: {eq: "default"}}) {
         nodes {
           fields {
             templateName
@@ -62,7 +55,7 @@ exports.createPages = ({ graphql, actions }) => {
           }
         }
       }
-      allKontentItemSpeakingEngagement {
+      allKontentItemSpeakingEngagement (filter: {preferred_language: {eq: "default"}}){
         nodes {
           fields {
             templateName
@@ -75,7 +68,7 @@ exports.createPages = ({ graphql, actions }) => {
     `).then(result => {
       const union = result.data.allKontentItemProjectReference.nodes.concat(result.data.allKontentItemSpeakingEngagement.nodes);
 
-      union.forEach(({ node }) => {
+      union.forEach(( node ) => {
         if (_.has(node, `fields.templateName`) && !_.isNil(node.fields.templateName)) {
           createPage({
             path: `${node.fields.templateName}/${node.fields.slug}`,
