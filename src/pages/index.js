@@ -4,7 +4,7 @@ import { Link, graphql } from 'gatsby';
 import Layout from '../components/layout';
 
 const Index = ({data}) => {
-  const union = data.allKenticoCloudItemBlogpostReference.edges.concat(data.allKenticoCloudItemProjectReference.edges).concat(data.allKenticoCloudItemSpeakingEngagement.edges);
+  const union = data.allKontentItemBlogpostReference.edges.concat(data.allKontentItemProjectReference.edges).concat(data.allKontentItemSpeakingEngagement.edges);
 
   const items = union.map(({node}) => {
     if (node.fields && node.fields !== null && node.fields.templateName && node.fields.templateName !== null) {
@@ -41,7 +41,7 @@ export default Index;
 
 export const query = graphql`
   {
-    allKenticoCloudItemBlogpostReference(filter: { fields: { language: { eq: "default" }}}) {
+    allKontentItemBlogpostReference(filter: { fields: { language: { eq: "default" }}}) {
       edges {
         node {
           fields {
@@ -59,7 +59,7 @@ export const query = graphql`
         }
       }
     }
-    allKenticoCloudItemProjectReference(filter: { fields: { language: { eq: "default" }}}) {
+    allKontentItemProjectReference(filter: { fields: { language: { eq: "default" }}}) {
       edges {
         node {
           fields {
@@ -79,7 +79,7 @@ export const query = graphql`
         }
       }
     }
-    allKenticoCloudItemSpeakingEngagement(filter: { fields: { language: { eq: "default" }}}) {
+    allKontentItemSpeakingEngagement(filter: { fields: { language: { eq: "default" }}}) {
       edges {
         node {
           fields {

@@ -5,7 +5,7 @@ module.exports = {
   plugins: [
     `gatsby-plugin-react-helmet`,
     {
-      resolve: `gatsby-source-kentico-cloud`,
+      resolve: `@kentico/gatsby-source-kontent`,
       options: {
         deliveryClientConfig: {
           projectId: `5ac93d1e-567d-01e6-e3b7-ac435f77b907`,

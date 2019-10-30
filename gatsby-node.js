@@ -1,11 +1,11 @@
 const path = require(`path`);
 const _ = require(`lodash`);
-const kcItemTypeIdentifier = `KenticoCloudItem`;
+const kcItemTypeIdentifier = `KontentItem`;
 const projectReferenceTypeIdentifier = `ProjectReference`;
 const speakingEngagementTypeIdentifier = `SpeakingEngagement`;
 
 exports.onCreateNode = ({ node, actions: { createNodeField } }) => {
-  if (_.has(node, `internal.type`) && _.isString(node.internal.type) && node.internal.type.startsWith(`KenticoCloudItem`)) {
+  if (_.has(node, `internal.type`) && _.isString(node.internal.type) && node.internal.type.startsWith(kcItemTypeIdentifier)) {
     let withDetailView = false;
     let templateName;
 
@@ -43,59 +43,53 @@ exports.onCreateNode = ({ node, actions: { createNodeField } }) => {
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions;
 
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve, _reject) => {
     graphql(`
     {
-      allKenticoCloudItemBlogpostReference {
-        edges {
-          node {
-            fields {
-              language
-            }
+      allKontentItemBlogpostReference {
+        nodes {
+          fields {
+            language
           }
         }
       }
-      allKenticoCloudItemProjectReference {
-        edges {
-          node {
-            fields {
-              templateName
-              slug
-              language
-            }
+      allKontentItemProjectReference {
+        nodes {
+          fields {
+            templateName
+            slug
+            language
           }
         }
       }
-      allKenticoCloudItemSpeakingEngagement {
-        edges {
-          node {
-            fields {
-              templateName
-              slug
-              language
-            }
+      allKontentItemSpeakingEngagement {
+        nodes {
+          fields {
+            templateName
+            slug
+            language
           }
         }
       }
     }
     `).then(result => {
-        const union = result.data.allKenticoCloudItemProjectReference.edges.concat(result.data.allKenticoCloudItemSpeakingEngagement.edges);
+      const union = result.data.allKontentItemProjectReference.nodes.concat(result.data.allKontentItemSpeakingEngagement.nodes);
 
-        union.forEach(({ node }) => {
-            if (_.has(node, `fields.templateName`) && !_.isNil(node.fields.templateName)) {
-            createPage({
-              path: `${node.fields.templateName}/${node.fields.slug}`,
-              component: path.resolve(`./src/templates/${node.fields.templateName}.js`),
-              context: {
-                // Data passed to context is available in page queries as GraphQL variables.
-                templateName: node.fields.templateName,
-                slug: node.fields.slug,
-                language: node.fields.language
-              },
-            });
-          }
-        });
-        resolve();
+      union.forEach(({ node }) => {
+        if (_.has(node, `fields.templateName`) && !_.isNil(node.fields.templateName)) {
+          createPage({
+            path: `${node.fields.templateName}/${node.fields.slug}`,
+            component: path.resolve(`./src/templates/${node.fields.templateName}.js`),
+            context: {
+              // Data passed to context is available in page queries as GraphQL variables.
+              templateName: node.fields.templateName,
+              slug: node.fields.slug,
+              language: node.fields.language
+            },
+          });
+        }
       });
+      resolve();
+    });
   });
 };
