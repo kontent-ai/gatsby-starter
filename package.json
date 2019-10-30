@@ -1,7 +1,7 @@
 {
-  "name": "gatsby-starter-kentico-cloud",
+  "name": "gatsby-starter-kontent",
   "version": "1.1.1",
-  "description": "Gatsby starter site with Kentico Cloud",
+  "description": "Gatsby starter site with Kentico kontent",
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
@@ -11,13 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Kentico/gatsby-starter-kentico-cloud"
+    "url": "https://github.com/Kentico/gatsby-starter-kontent"
   },
   "keywords": [
     "gatsby",
     "Gatsby",
-    "kentico-cloud",
-    "Kentico Cloud",
+    "kentico-kontent",
+    "Kentico Kontent",
+    "caas",
     "starter",
     "Starter"
   ],

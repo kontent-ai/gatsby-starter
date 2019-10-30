@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby starter site with Kentico Cloud`,
+    title: `Gatsby starter site with Kentico Kontent`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,

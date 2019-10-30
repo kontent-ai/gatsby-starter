@@ -1,13 +1,13 @@
-# Gatsby starter site with Kentico Cloud
+# Gatsby starter site with Kentico Kontent
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/78b48df8-68df-4b9a-9dfc-91803d8a77d8/deploy-status)](https://app.netlify.com/sites/gatsby-starter-kentico-cloud/deploys)
 
 [![Live demo](https://img.shields.io/badge/-Live%20Demo-brightgreen.svg)](https://gatsby-starter-kentico-cloud.netlify.com/)
-[![Stack Overflow](https://img.shields.io/badge/Stack%20Overflow-ASK%20NOW-FE7A16.svg?logo=stackoverflow&logoColor=white)](https://stackoverflow.com/tags/kentico-cloud)
+[![Stack Overflow](https://img.shields.io/badge/Stack%20Overflow-ASK%20NOW-FE7A16.svg?logo=stackoverflow&logoColor=white)](https://stackoverflow.com/tags/kentico-kontent)
 
-This repo contains a [Gatsby v2 starter site](https://www.gatsbyjs.org/starters/Kentico/gatsby-starter-kentico-cloud/) preconfigured with [Kentico Cloud](https://www.kenticocloud.com/) [source plugin](https://www.npmjs.com/package/gatsby-source-kentico-cloud). The site portrays a personal site of a fictional technical evangelist that attends user groups, writes blog posts and implements projects.
+This repo contains a [Gatsby v2 starter site](https://www.gatsbyjs.org/starters/Kentico/gatsby-starter-kentico-cloud/) preconfigured with [Kentico Kontent](https://kontent.ai/) [source plugin](https://www.npmjs.com/package/@kentico/gatsby-source-kontent). The site portrays a personal site of a fictional technical evangelist that attends user groups, writes blog posts and implements projects.
 
-![Gatsby starter site with Kentico Cloud](https://i.imgur.com/xvASA35.png)
+![Gatsby starter site with Kentico Kontent](https://i.imgur.com/xvASA35.png)
 
 ## Prerequisites
 
@@ -45,16 +45,16 @@ This will bootstrap the site, build all static pages and start the site at http:
 
 You may use any IDE, however, we've added a [settings file](https://github.com/Kentico/gatsby-starter-kentico-cloud/blob/master/.vscode/launch.json) for [Visual Studio Code](https://code.visualstudio.com/) for easier debugging.
 
-To get a smooth debugging experience, you can temporarily copy the `gatsby-source-kentico-cloud` [directory](https://github.com/Kentico/gatsby-source-kentico-cloud) of the source plugin to the `/plugins` directory of your site. Then, move the `gatsby-node.js` and `normalize.js` files from `/plugins/gatsby-source-kentico-cloud/src` to `/plugins/gatsby-source-kentico-cloud` (up one level).
+To get a smooth debugging experience, you can temporarily copy the `gatsby-source-kontent` [directory](https://github.com/Kentico/gatsby-source-kontent) of the source plugin to the `/plugins/@kentico/gatsby-source-kontent` directory of your site. Then, run int the context of `/plugins/@kentico/gatsby-source-kontent` two commands `npm install` and `npm run build`.
 
-### Using the Kentico Cloud JavaScript SDK configuration object
+### Using the Kentico Kontent JavaScript SDK configuration object
 
-The source plugin used by this starter in turn uses the [Kentico Cloud Delivery SDK](https://github.com/Kentico/kentico-cloud-js/tree/master/packages/delivery#kentico-cloud-delivery-sdk) in the background. You can put the [configuration object](https://github.com/Kentico/kentico-cloud-js/blob/master/packages/delivery/DOCS.md#client-configuration) of the SDK into the `deliveryClientConfig` property of the [gatsby-config.js](https://github.com/Kentico/gatsby-starter-kentico-cloud/blob/master/gatsby-config.js) file.
+The source plugin used by this starter in turn uses the [Kentico Kontent Delivery SDK](https://github.com/Kentico/kontent-delivery-sdk-js) in the background. You can put the [configuration object](https://github.com/Kentico/kontent-delivery-sdk-js/blob/v8.0.0/DOCS.md#client-configuration) of the SDK into the `deliveryClientConfig` property of the [gatsby-config.js](/gatsby-config.js) file.
 
 ### Experimenting
 
-Of all the artifacts of Kentico Cloud, the starter site only displays content items and only in the default language. But, our [source plugin](https://github.com/Kentico/gatsby-source-kentico-cloud) also provides content types and items in non-default languages. The plugin links them all so that these data can be fetched in one GraphQL query.
+Of all the artifacts of Kentico Kontent, the starter site only displays content items and only in the default language. But, our [source plugin](https://github.com/Kentico/gatsby-source-kontent) also provides content types and items in non-default languages. The plugin links them all so that these data can be fetched in one GraphQL query.
 
-Check out the [source plugin](https://github.com/Kentico/gatsby-source-kentico-cloud#features) for more details on which kinds of data and relationships it supports.
+Check out the [source plugin](https://github.com/Kentico/gatsby-source-kontent#features) for more details on which kinds of data and relationships it supports.
 
 ![Analytics](https://kentico-ga-beacon.azurewebsites.net/api/UA-69014260-4/Kentico/gatsby-starter-kentico-cloud?pixel)
