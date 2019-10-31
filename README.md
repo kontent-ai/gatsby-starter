@@ -45,7 +45,7 @@ This will bootstrap the site, build all static pages and start the site at http:
 
 You may use any IDE, however, we've added a [settings file](https://github.com/Kentico/gatsby-starter-kentico-cloud/blob/master/.vscode/launch.json) for [Visual Studio Code](https://code.visualstudio.com/) for easier debugging.
 
-To get a smooth debugging experience, you can temporarily copy the `gatsby-source-kontent` [directory](https://github.com/Kentico/gatsby-source-kontent) of the source plugin to the `/plugins/@kentico` directory of your site. Then, run int the context of `/plugins/@kentico/gatsby-source-kontent` two commands `npm install` and `npm run build`.
+To get a smooth debugging experience, you can temporarily copy the `gatsby-source-kontent` [directory](https://github.com/Kentico/gatsby-source-kontent) of the source plugin to the `/plugins/@kentico/gatsby-source-kontent` directory of your site. Then, in the context of `/plugins/@kentico/gatsby-source-kontent`, run two commands `npm install` and `npm run build`.
 
 ### Using the Kentico Kontent JavaScript SDK configuration object
 
