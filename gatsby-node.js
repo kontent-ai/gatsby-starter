@@ -1,19 +1,19 @@
 const path = require(`path`);
 const _ = require(`lodash`);
-const kcItemTypeIdentifier = `KontentItem`;
+const kontentItemTypeIdentifier = `KontentItem`;
 const projectReferenceTypeIdentifier = `ProjectReference`;
 const speakingEngagementTypeIdentifier = `SpeakingEngagement`;
 
 exports.onCreateNode = ({ node, actions: { createNodeField } }) => {
-  if (_.has(node, `internal.type`) && _.isString(node.internal.type) && node.internal.type.startsWith(kcItemTypeIdentifier)) {
+  if (_.has(node, `internal.type`) && _.isString(node.internal.type) && node.internal.type.startsWith(kontentItemTypeIdentifier)) {
     let withDetailView = false;
     let templateName;
 
-    if (node.internal.type === `${kcItemTypeIdentifier}${projectReferenceTypeIdentifier}`) {
+    if (node.internal.type === `${kontentItemTypeIdentifier}${projectReferenceTypeIdentifier}`) {
       templateName = `project-reference`;
       withDetailView = true;
     }
-    else if (node.internal.type === `${kcItemTypeIdentifier}${speakingEngagementTypeIdentifier}`) {
+    else if (node.internal.type === `${kontentItemTypeIdentifier}${speakingEngagementTypeIdentifier}`) {
       templateName = `speaking-engagement`;
       withDetailView = true;
     }
