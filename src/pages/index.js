@@ -4,7 +4,7 @@ import { Link, graphql } from 'gatsby';
 import Layout from '../components/layout';
 
 const Index = ({data}) => {
-  const union = data.allKenticoCloudItemBlogpostReference.edges.concat(data.allKenticoCloudItemProjectReference.edges).concat(data.allKenticoCloudItemSpeakingEngagement.edges);
+  const union = data.allKontentItemBlogpostReference.edges.concat(data.allKontentItemProjectReference.edges).concat(data.allKontentItemSpeakingEngagement.edges);
 
   const items = union.map(({node}) => {
     if (node.fields && node.fields !== null && node.fields.templateName && node.fields.templateName !== null) {
@@ -41,11 +41,27 @@ export default Index;
 
 export const query = graphql`
   {
-    allKenticoCloudItemBlogpostReference(filter: { fields: { language: { eq: "default" }}}) {
+    allKontentItemBlogpostReference(filter: {preferred_language: {eq: "default"}}) {
+      edges {
+        node {
+          id
+          elements {
+            url {
+              value
+            }
+            name___teaser_image__name {
+              value
+            }
+          }
+        }
+      }
+    }
+    allKontentItemProjectReference(filter: {preferred_language: {eq: "default"}}) {
       edges {
         node {
           fields {
-            language
+            templateName
+            slug
           }
           id
           elements {
@@ -59,33 +75,12 @@ export const query = graphql`
         }
       }
     }
-    allKenticoCloudItemProjectReference(filter: { fields: { language: { eq: "default" }}}) {
+    allKontentItemSpeakingEngagement(filter: {preferred_language: {eq: "default"}}) {
       edges {
         node {
           fields {
             templateName
             slug
-            language
-          }
-          id
-          elements {
-            url {
-              value
-            }
-            name___teaser_image__name {
-              value
-            }
-          }
-        }
-      }
-    }
-    allKenticoCloudItemSpeakingEngagement(filter: { fields: { language: { eq: "default" }}}) {
-      edges {
-        node {
-          fields {
-            templateName
-            slug
-            language
           }
           id
           elements {

@@ -5,7 +5,7 @@ import Layout from '../components/layout';
 import { formatDate } from '../helpers/date-time';
 
 const ProjectReference = ({data}) => {
-  const item = data.kenticoCloudItemProjectReference;
+  const item = data.kontentItemProjectReference;
 
   return (
     <Layout>
@@ -41,7 +41,7 @@ export const query = graphql`
         title
       }
     }
-    kenticoCloudItemProjectReference(fields: { slug: { eq: $slug }}) {
+    kontentItemProjectReference(fields: { slug: { eq: $slug }}) {
       system {
         name
       }

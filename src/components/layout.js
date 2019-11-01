@@ -21,8 +21,8 @@ const Layout = ({children}) => (
         <Helmet
           title={data.site.siteMetadata.title}
           meta={[
-            {name: `description`, content: `Gatsby starter site with Kentico Cloud`},
-            {name: `keywords`, content: `Kentico Cloud, Gatsby, starter`},
+            {name: `description`, content: `Gatsby starter site with Kentico Kontent`},
+            {name: `keywords`, content: `Kentico Kontent, Gatsby, starter`},
           ]}
         />
         <Header siteTitle={data.site.siteMetadata.title} />

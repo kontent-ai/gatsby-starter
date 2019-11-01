@@ -5,7 +5,7 @@ import Layout from '../components/layout';
 import { formatDate } from '../helpers/date-time';
 
 const SpeakingEngagement = ({data}) => {
-  const item = data.kenticoCloudItemSpeakingEngagement;
+  const item = data.kontentItemSpeakingEngagement;
 
   return (
     <Layout>
@@ -44,7 +44,7 @@ export const query = graphql`
         title
       }
     }
-    kenticoCloudItemSpeakingEngagement(fields: { slug: { eq: $slug }}) {
+    kontentItemSpeakingEngagement(fields: { slug: { eq: $slug }}) {
       system {
         name
       }
