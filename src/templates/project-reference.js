@@ -10,12 +10,12 @@ const ProjectReference = ({data}) => {
   return (
     <Layout>
       <div>
-        <img src={item.elements.name___teaser_image__teaser_image.value[0].url} />
+        <img src={item.elements.teaser_image.value[0].url} />
           <table>
             <tbody>
             <tr>
               <th>Name:</th>
-              <td>{item.elements.name___teaser_image__name.value}</td>
+              <td>{item.elements.teaser_image.value.name}</td>
             </tr>
             <tr>
               <th>URL:</th>
@@ -35,37 +35,39 @@ const ProjectReference = ({data}) => {
 export default ProjectReference;
 
 export const query = graphql`
-  query projectReferenceQuery($slug: String!) {
-    site {
-      siteMetadata {
-        title
-      }
+query projectReferenceQuery($slug: String!) {
+  site {
+    siteMetadata {
+      title
     }
-    kontentItemProjectReference(fields: { slug: { eq: $slug }}) {
-      system {
-        name
+  }
+  kontentItemProjectReference(fields: { slug: { eq: $slug }}) {
+    system {
+      name
+    }
+    elements {
+       teaser_image{
+        value {
+          url
+        }
       }
-      elements {
-        name___teaser_image__teaser_image {
-          value {
-            url
-          }
+      teaser_image {
+        value {
+          name
         }
-        name___teaser_image__name {
-          value
-        }
-        url {
-          value
-        }
-        started_at {
-          value
-        }
-        finished_at {
-          value
-        }
+      }
+      url {
+        value
+      }
+      started_at {
+        value
+      }
+      finished_at {
+        value
       }
     }
   }
+}
 `;
 
 ProjectReference.propTypes = {

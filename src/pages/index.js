@@ -8,7 +8,7 @@ const Index = ({data}) => {
 
   const items = union.map(({node}) => {
     if (node.fields && node.fields !== null && node.fields.templateName && node.fields.templateName !== null) {
-      const name = node.fields.templateName === `project-reference` ? node.elements.name___teaser_image__name.value : node.elements.name.value;
+      const name = node.fields.templateName === `project-reference` ? node.elements.teaser_image.value[0].name : node.elements.name.value;
 
       return (
         <li key={node.id}>
@@ -21,7 +21,7 @@ const Index = ({data}) => {
       return (
         <li key={node.id}>
           <a href={node.elements.url.value}>
-            {node.elements.name___teaser_image__name.value}
+            {node.elements.teaser_image.value[0].name}
           </a>
         </li>
       );
@@ -40,58 +40,62 @@ const Index = ({data}) => {
 export default Index;
 
 export const query = graphql`
-  {
-    allKontentItemBlogpostReference(filter: {preferred_language: {eq: "default"}}) {
-      edges {
-        node {
-          id
-          elements {
-            url {
-              value
-            }
-            name___teaser_image__name {
-              value
-            }
+{
+  allKontentItemBlogpostReference(filter: {preferred_language: {eq: "default"}}) {
+    edges {
+      node {
+        id
+        elements {
+          url {
+            value
           }
-        }
-      }
-    }
-    allKontentItemProjectReference(filter: {preferred_language: {eq: "default"}}) {
-      edges {
-        node {
-          fields {
-            templateName
-            slug
-          }
-          id
-          elements {
-            url {
-              value
-            }
-            name___teaser_image__name {
-              value
-            }
-          }
-        }
-      }
-    }
-    allKontentItemSpeakingEngagement(filter: {preferred_language: {eq: "default"}}) {
-      edges {
-        node {
-          fields {
-            templateName
-            slug
-          }
-          id
-          elements {
-            name {
-              value
+          teaser_image {
+            value {
+              name
             }
           }
         }
       }
     }
   }
+  allKontentItemProjectReference(filter: {preferred_language: {eq: "default"}}) {
+    edges {
+      node {
+        fields {
+          templateName
+          slug
+        }
+        id
+        elements {
+          url {
+            value
+          }
+          teaser_image {
+            value {
+              name
+            }
+          }
+        }
+      }
+    }
+  }
+  allKontentItemSpeakingEngagement(filter: {preferred_language: {eq: "default"}}) {
+    edges {
+      node {
+        fields {
+          templateName
+          slug
+        }
+        id
+        elements {
+          name {
+            value
+          }
+        }
+      }
+    }
+  }
+}
 `;
 
 Index.propTypes = {
