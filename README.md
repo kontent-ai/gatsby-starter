@@ -7,7 +7,7 @@
 
 This repo contains a [Gatsby v2 starter site](https://www.gatsbyjs.org/starters/Kentico/gatsby-starter-kontent/) pre-configured with [Kentico Kontent](https://kontent.ai/) [source plugin](https://www.npmjs.com/package/@kentico/gatsby-source-kontent). The site portrays a personal site of a fictional technical evangelist that attends user groups, writes blog posts and implements projects.
 
-![Gatsby starter site with Kentico Kontent](https://i.imgur.com/xvASA35.png)
+![Gatsby starter site with Kentico Kontent](screenshot.png)
 
 ## Prerequisites
 
