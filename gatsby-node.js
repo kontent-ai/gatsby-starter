@@ -1,43 +1,44 @@
 const path = require(`path`);
 const _ = require(`lodash`);
-const kontentItemTypeIdentifier = `KontentItem`;
-const projectReferenceTypeIdentifier = `ProjectReference`;
-const speakingEngagementTypeIdentifier = `SpeakingEngagement`;
+const { getKontentItemNodeTypeName } = require('@kentico/gatsby-source-kontent');
+const projectReferenceTypeIdentifier = `project_reference`;
+const speakingEngagementTypeIdentifier = `speaking_engagement`;
 
 exports.onCreateNode = ({ node, actions: { createNodeField } }) => {
-  if (_.has(node, `internal.type`) && _.isString(node.internal.type) && node.internal.type.startsWith(kontentItemTypeIdentifier)) {
-    let withDetailView = false;
-    let templateName;
+  let withDetailView = false;
+  let templateName;
 
-    if (node.internal.type === `${kontentItemTypeIdentifier}${projectReferenceTypeIdentifier}`) {
-      templateName = `project-reference`;
-      withDetailView = true;
-    }
-    else if (node.internal.type === `${kontentItemTypeIdentifier}${speakingEngagementTypeIdentifier}`) {
-      templateName = `speaking-engagement`;
-      withDetailView = true;
-    }
+  const type = _.get(node, `internal.type`, '');
+  if (type.startsWith(getKontentItemNodeTypeName(projectReferenceTypeIdentifier))) {
+    templateName = `project-reference`;
+    withDetailView = true;
+  } else  if (type.startsWith(getKontentItemNodeTypeName(speakingEngagementTypeIdentifier))) {
+    templateName = `speaking-engagement`;
+    withDetailView = true;
+  } else {
+    return;
+  }
 
-    if (withDetailView) {
-      createNodeField({
-        node,
-        name: `templateName`,
-        value: templateName
-      });
-
-      createNodeField({
-        node,
-        name: `slug`,
-        value: node.elements.url_slug.value
-      });
-    }
+  if (withDetailView) {
+    createNodeField({
+      node,
+      name: `templateName`,
+      value: templateName
+    });
 
     createNodeField({
       node,
-      name: `language`,
-      value: node.system.language
+      name: `slug`,
+      value: node.elements.url_slug.value
     });
   }
+
+  createNodeField({
+    node,
+    name: `language`,
+    value: node.system.language
+  });
+
 };
 
 exports.createPages = ({ graphql, actions }) => {
@@ -68,7 +69,7 @@ exports.createPages = ({ graphql, actions }) => {
     `).then(result => {
       const union = result.data.allKontentItemProjectReference.nodes.concat(result.data.allKontentItemSpeakingEngagement.nodes);
 
-      union.forEach(( node ) => {
+      union.forEach((node) => {
         if (_.has(node, `fields.templateName`) && !_.isNil(node.fields.templateName)) {
           createPage({
             path: `${node.fields.templateName}/${node.fields.slug}`,

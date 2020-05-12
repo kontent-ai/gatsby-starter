@@ -3,8 +3,9 @@
   "version": "1.1.2",
   "description": "Gatsby starter site with Kentico kontent",
   "scripts": {
-    "build": "gatsby build",
+    "prepare": "node scripts/ncp.js .env.template .env -u",
     "develop": "gatsby develop",
+    "build": "gatsby build",
     "test": "jest",
     "lint": "eslint src",
     "lint:fix": "eslint src --fix"
@@ -25,7 +26,7 @@
   "author": "Jan Lenoch <janl@kentico.com>",
   "license": "MIT",
   "dependencies": {
-    "@kentico/gatsby-source-kontent": "4.0.0-beta4",
+    "@kentico/gatsby-source-kontent": "^6.0.0-vnext.5",
     "gatsby": "^2.18.0",
     "gatsby-plugin-react-helmet": "^3.0.0",
     "react": "^16.5.1",
@@ -33,11 +34,13 @@
     "react-helmet": "^5.2.0"
   },
   "devDependencies": {
+    "dotenv": "^8.2.0",
     "eslint": "^5.7.0",
     "eslint-config-google": "^0.10.0",
     "eslint-plugin-node": "^7.0.1",
     "eslint-plugin-react": "^7.11.1",
-    "jest": "^23.6.0"
+    "jest": "^23.6.0",
+    "ncp": "^2.0.0"
   },
   "jest": {
     "testEnvironment": "node",
