@@ -21,7 +21,7 @@ const Index = ({data}) => {
       return (
         <li key={node.id}>
           <a href={node.elements.url.value}>
-            {node.elements.name___teaser_image__name.value}
+            {node.elements.name___teaser_image__name.value} (external)
           </a>
         </li>
       );

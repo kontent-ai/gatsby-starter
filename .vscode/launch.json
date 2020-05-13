@@ -49,7 +49,7 @@
         "internalConsoleOptions": "neverOpen",
         "env": { 
           "NODE_ENV": "development",
-          "DEBUG": "gatsby:*" 
+          // "DEBUG": "gatsby:*" 
         },
         "console": "integratedTerminal",
         "sourceMaps": false,
