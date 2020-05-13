@@ -24,9 +24,16 @@
     "Starter"
   ],
   "author": "Jan Lenoch <janl@kentico.com>",
+  "contributors": [
+    {
+      "name": "Ondřej Chrastina",
+      "email": "ondrej.chrastina@kentico.com",
+      "url": "http://ondrej.chrastina.tech"
+    }
+  ],
   "license": "MIT",
   "dependencies": {
-    "@kentico/gatsby-source-kontent": "^6.0.0-vnext.5",
+    "@kentico/gatsby-source-kontent": "^6.0.0",
     "gatsby": "^2.18.0",
     "gatsby-plugin-react-helmet": "^3.0.0",
     "react": "^16.5.1",
