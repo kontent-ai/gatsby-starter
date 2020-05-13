@@ -24,8 +24,8 @@ Make sure you have Gatsby CLI installed via `npm list -g gatsby-cli`. If not, yo
 Then, navigate to your projects directory and run `gatsby new [subdirectory name] https://github.com/Kentico/gatsby-starter-kentico-cloud`. Replace `[subdirectory name]` with your project directory's name. The CLI tool will essentially do three things:
 
 * create a subdirectory
-* clone the starter site codefiles into that subdirectory
-* run `npm install` to get all dependencies for you and copy content from `.env.template` to newly created `.env` file.
+* clone the starter site code files into that subdirectory
+* run `npm install` to get all dependencies for you (plus copy content from `.env.template` to newly created `.env` file).
 
 ### Clone or fork the repo
 
@@ -44,6 +44,35 @@ This will bootstrap the site, build all static pages and start the site at <http
 ## Developing
 
 You may use any IDE, however, we've added a [settings file](https://github.com/Kentico/gatsby-starter-kentico-cloud/blob/master/.vscode/launch.json) for [Visual Studio Code](https://code.visualstudio.com/) for easier debugging.
+
+### Create content source
+
+1. Go to [app.kontent.ai](https://app.kontent.ai) and [create empty project](https://docs.kontent.ai/tutorials/set-up-kontent/projects/manage-projects#a-creating-projects)
+1. Go to "Project Settings", select API keys and copy
+    * Project ID
+    * Management API key **require Business tier or higher or Trial account**
+1. Install [Kontent Backup Manager](https://github.com/Kentico/kontent-backup-manager-js) and import data to newly created project from [`kontent-backup.zip`](./kontent-backup.zip) file (place appropriate values for `apiKey` and `projectId` arguments):
+
+    ```sh
+    npm i -g @kentico/kontent-backup-manager
+
+    kbm --action=restore --apiKey=<Management API key> --projectId=<Project ID> --zipFilename=kontent-backup
+    ```
+
+    * :bulb: Alternatively, you can use the [Template Manager UI](https://kentico.github.io/kontent-template-manager/import-from-file) for importing the content.
+
+1. Go to your Kontent project and [publish all the imported items](https://docs.kontent.ai/tutorials/write-and-collaborate/publish-your-work/publish-content-items).
+
+1. Set environment variables to `.env` (created automatically by running `npm install`)
+    * `KONTENT_PROJECT_ID` from Go to "Project Settings" -> "API keys" -> "Delivery API" -> "Project ID"
+    * `KONTENT_LANGUAGE_CODENAMES`  from "Project Settings" -> "Localization" (use "Codename" of each language)
+
+### Retrieve both published and unpublished content
+
+To load data from [Preview API](https://docs.kontent.ai/reference/delivery-api#section/Production-vs.-Preview) just set following environment variables to you `.env` file (created automatically by running `npm install`)
+
+* `KONTENT_PREVIEW_KEY` from Go to "Project Settings" -> "API keys" -> "Preview API" -> "Primary key/Secondary key"
+* `KONTENT_PREVIEW_ENABLED` to `true`
 
 ### Experimenting
 
