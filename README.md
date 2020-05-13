@@ -25,7 +25,8 @@ Then, navigate to your projects directory and run `gatsby new [subdirectory name
 
 * create a subdirectory
 * clone the starter site code files into that subdirectory
-* run `npm install` to get all dependencies for you (plus copy content from `.env.template` to newly created `.env` file).
+* run `npm install` to get all dependencies for you
+  * that also copies content from `.env.template` to newly created `.env` file using `prepare` npm script
 
 ### Clone or fork the repo
 
