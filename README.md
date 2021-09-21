@@ -1,13 +1,13 @@
-# Gatsby starter site with Kentico Kontent
+# Gatsby starter site with Kontent by Kentico
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/78b48df8-68df-4b9a-9dfc-91803d8a77d8/deploy-status)](https://app.netlify.com/sites/gatsby-starter-kontent/deploys)
 
 [![Live demo](https://img.shields.io/badge/-Live%20Demo-brightgreen.svg)](https://gatsby-starter-kontent.netlify.com/)
 [![Stack Overflow](https://img.shields.io/badge/Stack%20Overflow-ASK%20NOW-FE7A16.svg?logo=stackoverflow&logoColor=white)](https://stackoverflow.com/tags/kentico-kontent)
 
-This repo contains a [Gatsby v2 starter site](https://www.gatsbyjs.org/starters/Kentico/gatsby-starter-kontent/) pre-configured with [Kentico Kontent](https://kontent.ai/) [source plugin](https://www.npmjs.com/package/@kentico/gatsby-source-kontent). The site portrays a personal site of a fictional technical evangelist that attends user groups, writes blog posts and implements projects.
+This repo contains a [Gatsby v2 starter site](https://www.gatsbyjs.org/starters/Kentico/gatsby-starter-kontent/) pre-configured with [Kontent by Kentico](https://kontent.ai/) [source plugin](https://www.npmjs.com/package/@kentico/gatsby-source-kontent). The site portrays a personal site of a fictional technical evangelist that attends user groups, writes blog posts and implements projects.
 
-![Gatsby starter site with Kentico Kontent](screenshot.png)
+![Gatsby starter site with Kontent by Kentico](screenshot.png)
 
 ## Prerequisites
 
@@ -30,7 +30,7 @@ Then, navigate to your projects directory and run `gatsby new [subdirectory name
 
 ### Clone or fork the repo
 
-[Clone](https://git-scm.com/docs/git-clone) or [fork](https://hub.github.com/hub-fork.1.html) this repo. Once it's done, navigate to the [app's root directory](https://github.com/Kentico/gatsby-starter-kentico-cloud) and run:
+[Clone](https://git-scm.com/docs/git-clone) or [fork](https://hub.github.com/hub-fork.1.html) this repo. Once it's done, navigate to the [app's root directory](https://github.com/Kentico/gatsby-starter-kontent) and run:
 
 `npm install`
 
@@ -51,7 +51,7 @@ You may use any IDE, however, we've added a [settings file](https://github.com/K
 1. Go to [app.kontent.ai](https://app.kontent.ai) and [create empty project](https://docs.kontent.ai/tutorials/set-up-kontent/projects/manage-projects#a-creating-projects)
 1. Go to "Project Settings", select API keys and copy
     * Project ID
-    * Management API key **require Business tier or higher or Trial account**
+    * Management API key
 1. Install [Kontent Backup Manager](https://github.com/Kentico/kontent-backup-manager-js) and import data to newly created project from [`content.zip`](./content.zip) file (place appropriate values for `apiKey` and `projectId` arguments):
 
     ```sh
@@ -77,7 +77,7 @@ To load data from [Preview API](https://docs.kontent.ai/reference/delivery-api#s
 
 ### Experimenting
 
-Of all the artifacts of Kentico Kontent, the starter site only displays content items and only in the default language. But, our [source plugin](https://github.com/Kentico/gatsby-source-kontent/tree/master/packages/gatsby-source-kontent) also provides content types and items in non-default languages.
+Of all the artifacts of Kontent, the starter site only displays content items and only in the default language. But, our [source plugin](https://github.com/Kentico/gatsby-source-kontent/tree/master/packages/gatsby-source-kontent) also provides content types and items in non-default languages.
 
 Check out the [source plugin's readme](https://github.com/Kentico/gatsby-source-kontent/tree/master/packages/gatsby-source-kontent#readme) for more details on which kinds of data and relationships it supports.
 
