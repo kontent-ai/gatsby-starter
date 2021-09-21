@@ -5,7 +5,7 @@
 [![Live demo](https://img.shields.io/badge/-Live%20Demo-brightgreen.svg)](https://gatsby-starter-kontent.netlify.com/)
 [![Stack Overflow](https://img.shields.io/badge/Stack%20Overflow-ASK%20NOW-FE7A16.svg?logo=stackoverflow&logoColor=white)](https://stackoverflow.com/tags/kentico-kontent)
 
-This repo contains a [Gatsby v2 starter site](https://www.gatsbyjs.org/starters/Kentico/gatsby-starter-kontent/) pre-configured with [Kontent by Kentico](https://kontent.ai/) [source plugin](https://www.npmjs.com/package/@kentico/gatsby-source-kontent). The site portrays a personal site of a fictional technical evangelist that attends user groups, writes blog posts and implements projects.
+This repo contains a [Gatsby v2 starter site](https://www.gatsbyjs.org/starters/Kentico/gatsby-starter-kontent/) pre-configured with [Kontent](https://kontent.ai/) [source plugin](https://www.npmjs.com/package/@kentico/gatsby-source-kontent). The site portrays a personal site of a fictional technical evangelist that attends user groups, writes blog posts and implements projects.
 
 ![Gatsby starter site with Kontent by Kentico](screenshot.png)
 
