@@ -1,7 +1,7 @@
 {
   "name": "gatsby-starter-kontent",
   "version": "1.1.2",
-  "description": "Gatsby starter site with Kentico kontent",
+  "description": "Gatsby starter site with Kontent by Kentico",
   "scripts": {
     "prepare": "node scripts/ncp.js .env.template .env -u",
     "develop": "gatsby develop",
