@@ -2,7 +2,7 @@ require('dotenv').config();
 
 module.exports = {
   siteMetadata: {
-    title: `Gatsby starter site with Kentico Kontent`,
+    title: `Gatsby starter site with Kontent by Kentico`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
