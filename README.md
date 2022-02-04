@@ -48,7 +48,7 @@ You may use any IDE, however, we've added a [settings file](https://github.com/K
 
 ### Create content source
 
-1. Go to [app.kontent.ai](https://app.kontent.ai) and [create empty project](https://docs.kontent.ai/tutorials/set-up-kontent/projects/manage-projects#a-creating-projects)
+1. Go to [app.kontent.ai](https://app.kontent.ai) and [create empty project](https://kontent.ai/learn/tutorials/manage-kontent/projects/manage-projects#a-create-projects)
 1. Go to "Project Settings", select API keys and copy
     * Project ID
     * Management API key **require Business tier or higher or Trial account**
@@ -62,7 +62,7 @@ You may use any IDE, however, we've added a [settings file](https://github.com/K
 
     * :bulb: Alternatively, you can use the [Template Manager UI](https://kentico.github.io/kontent-template-manager/import-from-file) for importing the content.
 
-1. Go to your Kontent project and [publish all the imported items](https://docs.kontent.ai/tutorials/write-and-collaborate/publish-your-work/publish-content-items).
+1. Go to your Kontent project and [publish all the imported items](https://kontent.ai/learn/tutorials/write-and-collaborate/publish-your-work/publish-content-items).
 
 1. Set environment variables to `.env` (created automatically by running `npm install`)
     * `KONTENT_PROJECT_ID` from Go to "Project Settings" -> "API keys" -> "Delivery API" -> "Project ID"
@@ -70,7 +70,7 @@ You may use any IDE, however, we've added a [settings file](https://github.com/K
 
 ### Retrieve both published and unpublished content
 
-To load data from [Preview API](https://docs.kontent.ai/reference/delivery-api#section/Production-vs.-Preview) just set following environment variables to you `.env` file (created automatically by running `npm install`)
+To load data from [Preview Delivery API](https://kontent.ai/learn/reference/delivery-api#section/Production-vs.-Preview), set the following environment variables in your `.env` file (created automatically by running `npm install`)
 
 * `KONTENT_PREVIEW_KEY` from Go to "Project Settings" -> "API keys" -> "Preview API" -> "Primary key/Secondary key"
 * `KONTENT_PREVIEW_ENABLED` to `true`
