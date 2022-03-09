@@ -55,7 +55,7 @@ You may use any IDE, however, we've added a [settings file](https://github.com/K
 1. Install [Kontent Backup Manager](https://github.com/Kentico/kontent-backup-manager-js) and import data to newly created project from [`content.zip`](./content.zip) file (place appropriate values for `apiKey` and `projectId` arguments):
 
     ```sh
-    npm i -g @kentico/kontent-backup-manager
+    npm i -g @kentico/kontent-backup-manager@3.0.1
 
     kbm --action=restore --apiKey=<Management API key> --projectId=<Project ID> --zipFilename=content
     ```
