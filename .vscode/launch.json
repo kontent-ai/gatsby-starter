@@ -42,9 +42,6 @@
         "cwd": "${workspaceFolder}",
         "preLaunchTask": null,
         "runtimeExecutable": null,
-        "runtimeArgs": [
-          "--nolazy"
-        ],
         "restart": true,
         "internalConsoleOptions": "neverOpen",
         "env": { 
