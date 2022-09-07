@@ -56,6 +56,7 @@ const Article = ({ data }) => {
               let selectedTheme = tweet.theme.value[0].codename;
               selectedTheme = selectedTheme ? selectedTheme : 'light';
 
+              if(typeof window !== 'undefined') {
               setTimeout(() => {
                 window.twttr.widgets.createTweet(
                   tweetID,
@@ -65,6 +66,7 @@ const Article = ({ data }) => {
                   }
                 );
               }, 150);
+            }
 
               return <div id={`tweet${tweetID}`}></div>;
             }
