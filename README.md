@@ -4,6 +4,7 @@
 
 [![Live demo](https://img.shields.io/badge/-Live%20Demo-brightgreen.svg)](https://gatsby-starter-kontent.netlify.com/)
 [![Stack Overflow](https://img.shields.io/badge/Stack%20Overflow-ASK%20NOW-FE7A16.svg?logo=stackoverflow&logoColor=white)](https://stackoverflow.com/tags/kontent-ai)
+[![Discord](https://img.shields.io/discord/821885171984891914?color=%237289DA&label=Kontent.ai%20Discord&logo=discord)](https://discord.gg/SKCxwPtevJ)
 
 This repo contains a Gatsby starter site pre-configured with [Kontent.ai](https://kontent.ai/) [source plugin](https://www.npmjs.com/package/@kontent-ai/gatsby-source). The site portrays a list of articles written by a coffee shop called dancing goat.
 
