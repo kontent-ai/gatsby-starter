@@ -2,12 +2,14 @@ require('dotenv').config();
 
 module.exports = {
   siteMetadata: {
-    title: `Gatsby starter site with Kentico Kontent`,
+    title: `Gatsby starter site with Kontent.ai`,
   },
   plugins: [
+    // once https://github.com/gatsbyjs/gatsby/discussions/35841 is released replace with embedded API
+    // currently it is not possible to use GraphQL data there
     `gatsby-plugin-react-helmet`,
     {
-      resolve: '@kentico/gatsby-source-kontent',
+      resolve: '@kontent-ai/gatsby-source',
       options: {
         projectId: process.env.KONTENT_PROJECT_ID, // Fill in your Project ID
         // if false used authorization key for secured API

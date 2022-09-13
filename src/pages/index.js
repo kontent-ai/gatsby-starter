@@ -4,11 +4,11 @@ import { Link, graphql } from 'gatsby';
 import Layout from '../components/layout';
 
 const Index = ({data}) => {
-  const union = data.allKontentItemBlogpostReference.edges.concat(data.allKontentItemProjectReference.edges).concat(data.allKontentItemSpeakingEngagement.edges);
+  const union = data.allKontentItemArticle.edges;
 
   const items = union.map(({node}) => {
-    if (node.fields && node.fields !== null && node.fields.templateName && node.fields.templateName !== null) {
-      const name = node.fields.templateName === `project-reference` ? node.elements.name___teaser_image__name.value : node.elements.name.value;
+    if (node.elements && node.elements !== null) {
+      const name = node.elements.title.value;
 
       return (
         <li key={node.id}>
@@ -20,8 +20,8 @@ const Index = ({data}) => {
     } else {
       return (
         <li key={node.id}>
-          <a href={node.elements.url.value}>
-            {node.elements.name___teaser_image__name.value} (external)
+          <a href={node.fields.slug}>
+            {node.elements.teaser_image.name} (external)
           </a>
         </li>
       );
@@ -41,22 +41,7 @@ export default Index;
 
 export const query = graphql`
   {
-    allKontentItemBlogpostReference(filter: {preferred_language: {eq: "default"}}) {
-      edges {
-        node {
-          id
-          elements {
-            url {
-              value
-            }
-            name___teaser_image__name {
-              value
-            }
-          }
-        }
-      }
-    }
-    allKontentItemProjectReference(filter: {preferred_language: {eq: "default"}}) {
+    allKontentItemArticle(filter: {preferred_language: {eq: "en-US"}}) {
       edges {
         node {
           fields {
@@ -65,27 +50,11 @@ export const query = graphql`
           }
           id
           elements {
-            url {
+            title {
               value
             }
-            name___teaser_image__name {
-              value
-            }
-          }
-        }
-      }
-    }
-    allKontentItemSpeakingEngagement(filter: {preferred_language: {eq: "default"}}) {
-      edges {
-        node {
-          fields {
-            templateName
-            slug
-          }
-          id
-          elements {
-            name {
-              value
+            teaser_image {
+              name
             }
           }
         }

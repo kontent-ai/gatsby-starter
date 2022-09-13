@@ -1,19 +1,15 @@
 const path = require(`path`);
 const _ = require(`lodash`);
-const { getKontentItemNodeTypeName } = require('@kentico/gatsby-source-kontent');
-const projectReferenceTypeIdentifier = `project_reference`;
-const speakingEngagementTypeIdentifier = `speaking_engagement`;
+const { getKontentItemNodeTypeName } = require('@kontent-ai/gatsby-source');
+const articleTypeIdentifier = `article`;
 
 exports.onCreateNode = ({ node, actions: { createNodeField } }) => {
   let withDetailView = false;
   let templateName;
 
   const type = _.get(node, `internal.type`, '');
-  if (type.startsWith(getKontentItemNodeTypeName(projectReferenceTypeIdentifier))) {
-    templateName = `project-reference`;
-    withDetailView = true;
-  } else  if (type.startsWith(getKontentItemNodeTypeName(speakingEngagementTypeIdentifier))) {
-    templateName = `speaking-engagement`;
+  if (type.startsWith(getKontentItemNodeTypeName(articleTypeIdentifier))) {
+    templateName = `article`;
     withDetailView = true;
   } else {
     return;
@@ -29,7 +25,7 @@ exports.onCreateNode = ({ node, actions: { createNodeField } }) => {
     createNodeField({
       node,
       name: `slug`,
-      value: node.elements.url_slug.value
+      value: node.elements.url_pattern.value
     });
   }
 
@@ -47,27 +43,23 @@ exports.createPages = ({ graphql, actions }) => {
   return new Promise((resolve) => {
     graphql(`
     {
-      allKontentItemProjectReference (filter: {preferred_language: {eq: "default"}}) {
+      allKontentItemArticle (filter: {preferred_language: {eq: "en-US"}}) {
         nodes {
           fields {
             templateName
             slug
             language
           }
-        }
-      }
-      allKontentItemSpeakingEngagement (filter: {preferred_language: {eq: "default"}}){
-        nodes {
-          fields {
-            templateName
-            slug
-            language
+          elements {
+            title {
+              name
+              value
+            }
           }
         }
       }
-    }
-    `).then(result => {
-      const union = result.data.allKontentItemProjectReference.nodes.concat(result.data.allKontentItemSpeakingEngagement.nodes);
+    }`).then(result => {
+      const union = result.data.allKontentItemArticle.nodes;
 
       union.forEach((node) => {
         if (_.has(node, `fields.templateName`) && !_.isNil(node.fields.templateName)) {

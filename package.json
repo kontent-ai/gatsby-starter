@@ -1,10 +1,11 @@
 {
-  "name": "gatsby-starter-kontent",
+  "name": "gatsby-starter",
   "version": "1.1.2",
-  "description": "Gatsby starter site with Kentico kontent",
+  "description": "Gatsby starter site with Kontent.ai",
   "scripts": {
     "prepare": "node scripts/ncp.js .env.template .env -u",
     "develop": "gatsby develop",
+    "clean": "gatsby clean",
     "build": "gatsby build",
     "test": "jest",
     "lint": "eslint src",
@@ -12,13 +13,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Kentico/gatsby-starter-kontent"
+    "url": "https://github.com/kontent-ai/gatsby-starter"
   },
   "keywords": [
     "gatsby",
     "Gatsby",
-    "kentico-kontent",
-    "Kentico Kontent",
+    "Kontent.ai",
+    "kontent-ai",
     "caas",
     "starter",
     "Starter"
@@ -27,26 +28,28 @@
   "contributors": [
     {
       "name": "Ondřej Chrastina",
-      "email": "ondrej.chrastina@kentico.com",
-      "url": "http://ondrej.chrastina.tech"
+      "email": "ondrej.chrastina@kontent.ai",
+      "url": "http://ondrej.chrastina.dev"
     }
   ],
   "license": "MIT",
   "dependencies": {
-    "@kentico/gatsby-source-kontent": "^6.0.0",
-    "gatsby": "^2.18.0",
-    "gatsby-plugin-react-helmet": "^3.0.0",
-    "react": "^16.5.1",
-    "react-dom": "^16.5.1",
-    "react-helmet": "^5.2.0"
+    "@kontent-ai/gatsby-components": "^9.0.2",
+    "@kontent-ai/gatsby-source": "^9.0.2",
+    "gatsby": "^4.21.1",
+    "gatsby-plugin-image": "^2.23.0",
+    "gatsby-plugin-react-helmet": "^5.21.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-helmet": "^6.1.0"
   },
   "devDependencies": {
-    "dotenv": "^8.2.0",
-    "eslint": "^5.7.0",
-    "eslint-config-google": "^0.10.0",
-    "eslint-plugin-node": "^7.0.1",
-    "eslint-plugin-react": "^7.11.1",
-    "jest": "^23.6.0",
+    "dotenv": "^16.0.1",
+    "eslint": "^8.23.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-react": "^7.31.1",
+    "jest": "^29.0.1",
     "ncp": "^2.0.0"
   },
   "jest": {
