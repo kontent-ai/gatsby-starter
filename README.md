@@ -38,7 +38,7 @@ Then, navigate to your projects directory and run `gatsby new [subdirectory name
 
 Now, run:
 
-`npm develop` (or `gatsby develop`, should you have the Gatsby CLI installed)
+`npm run develop` (or `gatsby develop`, should you have the Gatsby CLI installed)
 
 This will bootstrap the site, build all static pages and start the site at <http://localhost:8000> . You'll also be able to test arbitrary GraphQL queries in the GraphiQL interface via <http://localhost:8000/___graphql>.
 

@@ -5,6 +5,8 @@ module.exports = {
     title: `Gatsby starter site with Kontent.ai`,
   },
   plugins: [
+    // once https://github.com/gatsbyjs/gatsby/discussions/35841 is released replace with embedded API
+    // currently it is not possible to use GraphQL data there
     `gatsby-plugin-react-helmet`,
     {
       resolve: '@kontent-ai/gatsby-source',
