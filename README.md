@@ -58,7 +58,7 @@ You may use any IDE, however, we recommend [Visual Studio Code](https://code.vis
 
 ### Retrieve both published and unpublished content
 
-To load data from [Preview API](https://docs.kontent.ai/reference/delivery-api#section/Production-vs.-Preview) just set the following environment variables to your `.env` file (created automatically by running `npm install`)
+To load data from [Preview API](https://kontent.ai/learn/reference/delivery-api/#section/Production-vs.-Preview) just set the following environment variables to your `.env` file (created automatically by running `npm install`)
 
 * `KONTENT_PREVIEW_KEY` from Go to "Project Settings" -> "API keys" -> "Preview API" -> "Primary key/Secondary key"
 * `KONTENT_PREVIEW_ENABLED` to `true`
