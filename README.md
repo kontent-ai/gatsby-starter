@@ -1,3 +1,6 @@
+> [!Warning]
+> Deprecation Notice: This repository is no longer maintained.
+
 # Gatsby starter site with Kontent.ai
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/78b48df8-68df-4b9a-9dfc-91803d8a77d8/deploy-status)](https://app.netlify.com/sites/gatsby-starter-kontent/deploys)
